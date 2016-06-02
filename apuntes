@@ -1,5 +1,37 @@
 
 
+     class varecon {
+            // Crear algunas propiedades (variables atadas a un objeto)
+            
+            public $variacion;
+            public $variable;
+            
+            
+            // Asignar valores
+            public function __construct($nombre,$variacion) {
+               $this->nombre = $nombre;
+              $this->variacion = $variacion;
+                          }
+            
+            // Crear un método (función atada a un objeto)
+            public function bloque() {
+              return $this->nombre . " " . $this->variacion ;}
+              }
+    
+    $preciosube = new varecon ("Precio","sube");
+    $preciobaja = new varecon ("Precio","baja");
+    $salariosube = new varecon ("Salario","sube" );
+    $salariobaja = new varecon ("Salario","baja");
+    $consumobaja = new varecon ("Consumo","Baja");
+    
+    
+    if ($preciosube->variacion=="sube") {echo $salariobaja -> bloque();}
+    if ($salariobaja->variacion=="baja") {echo $consumobaja -> bloque();}
+    
+
+
+// separata
+
 class suba {
                 
                 public $suba;
