@@ -1,0 +1,20 @@
+
+
+class varecon {
+                
+                public $subaprecio=;
+                public $salario=array(0,1);
+                public $consumo=array(0,1);
+                
+                public function __construct($salario, $precio) {
+                    $this->precio=$precio;
+                    $this->salario=$salario;
+                    $this->consumo=$consumo;
+                    
+                    }
+                            
+                public function subeprecio ($precio,$salario) {
+                    
+                    $precio[0];
+                    if ($precio[0]) { $salario[1] }  ;
+                    if ($salario[1]) { echo "Cae el Salario";
