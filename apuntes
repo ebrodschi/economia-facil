@@ -1,20 +1,56 @@
 
 
-class varecon {
+class suba {
                 
-                public $subaprecio=;
+                public $suba;
+                public $baja;
+                public $subaprecio=true;
+                public $subasalario=true;
+                public $subaconsumo=true;
+                public $caesalario=true;
+                
+                
+                            
+                public function subeprecio () {
+                    
+                    if ($subaprecio=true) { $caesalario=true; } 
+                    if ($caesalario=true) { echo "Cae Salario"; }
+         
+                }}
+       
+      return subeprecio ();
+      ?>   
+  //separata//
+
+function caesalarios() {echo "Cae Salarios";}
+
+<?php
+
+if (subaprecio=true) {caesalarios()}
+
+class suba {
+                
+                public $suba;
+                public $baja;
+                public $subaprecio=true;
+                public $subasalario=true;
+                public $subaconsumo=true;
+                pubblic $caesalario=true;
+                
                 public $salario=array(0,1);
                 public $consumo=array(0,1);
                 
-                public function __construct($salario, $precio) {
-                    $this->precio=$precio;
-                    $this->salario=$salario;
-                    $this->consumo=$consumo;
+                public function __construct($va) {
+                    $this->subaprecio=$subaprecio;
+                    $this->subasalario=$subassalario;
+                    $this->subaconsumo=$subaconsumo;
                     
                     }
                             
-                public function subeprecio ($precio,$salario) {
+                public function subeprecio ($subaprecio,$caesalario) {
                     
-                    $precio[0];
-                    if ($precio[0]) { $salario[1] }  ;
-                    if ($salario[1]) { echo "Cae el Salario";
+                    if ($subaprecio=true) { $caesalario=true; } 
+                    if ($caesalario=true) { echo "Cae Salario"; }
+                    
+  ?>                  
+                
