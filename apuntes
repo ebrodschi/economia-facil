@@ -1,5 +1,94 @@
+////ESTA FUNCIONA BIEN//// 
+
+$preciovar=2;
+$salariovar=0;
+$consumovar=0; 
+    
+if ($preciovar == 1) {$salariovar=
+1; 
+     echo 'Salario cae por suba de precios';} 
+     elseif ($preciovar==2) {$salariovar=1;
+     echo '<br>Salario sube por caída de precios';} else {$salariovar=0;}
+   
+if ($salariovar == 2) {$consumovar=
+     2;
+     echo '<br>Consumo familiar cae por caída de salarios';
+     } 
+     elseif ($salariovar == 1) {$consumovar=
+     1;
+     echo '<br>Consumo familiar sube por suba de salarios';
+     }       
+    else {$consumovar=0;} 
+   
+   
+    
+//
+     
+    
+    $subaprecio=true;
+    $caesalario=1;
+    $caeconsumo=1;
+    
+    if ($subaprecio==true) {$caesalario==true;}
+    if ($caesalario==true) {echo 'cae salario';}
+    
+   
+     class varecon {
+            // Crear algunas propiedades (variables atadas a un objeto)
+            
+            public $variacion;
+            public $variable;
+            public $precio=0;
+            
+           
+    
+            
+            
+            // Asignar valores
+            public function __construct($nombre,$variacion) {
+               $this->nombre = $nombre;
+              $this->variacion = $variacion;
+                          }
+            
+            // Crear un método (función atada a un objeto)
+            public function bloque() {
+              return $this->nombre . " " . $this->variacion ;}
+              }
+    
+ public function $varsal= if ($precio==0) {echo 'whatthefuck';} 
+            echo $varsal();
+    
+    
+    echo $salario->variacion;
+    
+    $preciosube = new varecon ("Precio","sube");
+    $preciobaja = new varecon ("Precio","baja");
+    $salariosube = new varecon ("Salario","sube" );
+    $salariobaja = new varecon ("Salario","baja");
+    $consumobaja = new varecon ("Consumo","Baja");
+    
+    
+    if ($preciosube->variacion=="sube") {echo $salariobaja -> bloque();}
+    if ($salariobaja->variacion=="baja") {echo $consumobaja -> bloque();}
+    
+    
+ 
+    
+    
+    
+    ?>
+	</body>
+</html>
+
+//
 
 
+   
+   
+   
+   
+   
+   
      class varecon {
             // Crear algunas propiedades (variables atadas a un objeto)
             
