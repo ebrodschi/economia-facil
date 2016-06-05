@@ -5,7 +5,7 @@ $salariovar=0;
 $consumovar=0; 
     
 if ($preciovar == 1) {$salariovar=
-1; 
+2; 
      echo 'Salario cae por suba de precios';} 
      elseif ($preciovar==2) {$salariovar=1;
      echo '<br>Salario sube por caída de precios';} else {$salariovar=0;}
@@ -20,11 +20,89 @@ if ($salariovar == 2) {$consumovar=
      }       
     else {$consumovar=0;} 
    
-   
+// ESTA AUN NO FUNCIONA BIEN
+
+class varecon {
     
-//
+   
+   
+    public function __construct($nombre,$variacion) {
+               $this->nombre = $nombre;
+              $this->variacion = $variacion;
+                          }
+            
+            // Crear un método (función atada a un objeto)
+            public function bloque() {
+              return $this->nombre . " " . $this->variacion ;}
+              }
+   
+   $preciovar=2;
+    $salariovar=0;
+    $consumovar=0;
+   
+   
+   $precio = new varecon ("Precio",$preciovar);
+   $salario = new varecon ("Salario",$salariovar);
+   $consumo = new varecon ("Consumo",$consumovar);
+    
+function precio () {      
+     if ($precio->variacion == 1) {$salario->variacion=
+2; 
+echo 'Salario cae por suba de precios';} 
+elseif ($precio->variacion==2) {$salario->variacion=1;
+echo '<br>Salario sube por caída de precios';} 
+else {$salario->variacion=0;
+echo 'prueba y error';}    
+      
+}
+  
+  echo precio();  
+    
+    ?>
+	</body>
+</html>
+
+    
+// ESTA AUN NOFUNCA BIEN. NO TOMA DE AFUERA EL VALOR DE $PRECIOVAR
+
+ $preciovar=2;
+    $salariovar=0;
+    $consumovar=0; 
+    $sarasa=& $preciovar;
+     
+         
+ function precio () { 
+     global $preciovar, $salariovar;
+     if ($preciovar == 1) {$salariovar=
+2; 
+echo 'Salario cae por suba de precios';} 
+elseif ($preciovar==2) {$salariovar=1;
+echo '<br>Salario sube por caída de precios';} 
+else {$salariovar=0;
+echo 'prueba y error';}
+
+
+ }
+   
+    if ($salariovar == 2) {$consumovar=
+2;
+echo '<br>Consumo familiar cae por caída de salarios';
+} 
+    elseif ($salariovar == 1) {$consumovar=
+1;
+echo '<br>Consumo familiar sube por suba de salarios';
+}       
+    else {$consumovar=0;} 
+   
+ echo precio();
+   
      
     
+    
+    
+    
+    
+    //
     $subaprecio=true;
     $caesalario=1;
     $caeconsumo=1;
