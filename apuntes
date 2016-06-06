@@ -1,3 +1,49 @@
+///armado de array: 
+
+$controlvar0= array ($preciovar0, $salariovar0,$consumovar0);
+$cuantosvar = array_search (0,$controlvar0,true);
+
+
+
+/// css
+
+#button0 {
+    
+    height: auto;
+    background-color: red;
+    border-radius: 10px;
+    margin: auto;
+    vertical-align: center;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+
+
+ #button0 p {
+    font-size: 1em;
+    color: white;
+    height: auto;
+    background-color: red;
+    border-radius: 10px;
+    margin: 2% 2% 2% 2%;
+    vertical-align: center;
+    text-align: center;
+}
+
+
+#col1 {
+   
+    width: 25%;
+    height: auto;
+    margin: auto;
+    vertical-align: center;
+    margin-left: 1%;
+    float: left;
+}
+
+
+
 /// con columnas y botones 3 variables modifican de 1 variable y 2 ciclos
 
 <!DOCTYPE html>
