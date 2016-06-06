@@ -1,3 +1,220 @@
+//version 6/6/2016 css
+
+.header {
+    width: 300px;
+    height: 25px;
+    background-color: #5A68A5;
+    border-radius: 10px;
+}
+
+img {
+    width: 200px;
+    float: right;
+}
+
+h1 {
+    font-family: Verdana, sans-serif;
+    font-size: 18px;
+    text-align: center;
+    color: #ffffff;
+}
+
+p {
+    font-family: Tahoma, sans-serif;
+}
+
+li {
+    font-family: Tahoma, sans-serif;
+    list-style-type: square;
+}
+
+input {
+    width: 280px;
+}
+
+#button0{
+	border: 2px solid #000000;
+    border-radius: 5px;
+    position: relative;
+	left: 0%;
+	background-color: #cc0323;
+	height: auto;
+	width: 90%;
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#button0 p{
+    position: relative;
+	font-size: 1em;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+
+}
+
+#col1 {
+    
+    position: relative;
+    margin-left: 2%;
+    float: left;
+    left: 0%;
+	border-radius: 5px;
+	background-color: white;
+	height: auto;
+	width: 10%;
+	text-align: center;
+	vertical-align: middle;
+	
+}
+
+#col2 {
+    
+    position: relative;
+    margin-left: 2%;
+    float: left;
+    left: 0%;
+	border-radius: 5px;
+	background-color: white;
+	height: auto;
+	width: 15%;
+	text-align: center;
+	vertical-align: middle;
+	
+}
+
+
+
+#button1{
+	border: 2px solid #000000;
+    border-radius: 5px;
+    position: relative;
+	left: 0%;
+	background-color: #cc0323;
+	height: auto;
+	width: 90%;
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 80%;
+    margin-bottom: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#button1 p{
+    position: relative;
+	font-size: 1em;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+
+}
+
+
+//version 6/6/2016 html
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link type='text/css' rel='stylesheet' href='style.css'/>
+    <title>PHP!</title>
+  </head>
+  <body>
+   
+  
+    
+    
+<div id="col1"> 
+
+
+
+ <?php       
+     
+$preciovar0=1;
+$salariovar0=1;
+$consumovar0=0; 
+
+$preciovar1=0;
+$salariovar1=0;
+$consumovar1=0; 
+
+$preciovar2=0;
+$salariovar2=0;
+$consumovar2=0; 
+
+$controlvar0= array ($preciovar0, $salariovar0,$consumovar0);
+$cuantosvar = array_search (0,$controlvar0,true);
+$cuantosvarlin = $cuantosvar*100 . "%"; 
+
+
+if ($salariovar0 == 2) {$consumovar1=
+     2;
+     echo '<div id="button0">
+				<p> Consumo familiar cae por caída de salarios </p> </div>';
+     } 
+     elseif ($salariovar0 == 1) {$consumovar1=
+     1;
+     echo ' <div id="button0">
+				<p> Consumo familiar sube por suba de salarios </p> </div>';
+     }       
+    else {$consumovar1=0;} 
+    
+if ($preciovar0 == 1) {$salariovar1=
+2; 
+     echo '<div id="button0"> <p>  Salario cae por suba de precios </p> </div>';
+     if ($preciovar0<>0) {$contar1=1;}
+     if ($salariovar0<>0) {$contar2=1;}
+     $contartot=$contar1+$contar2;
+     } 
+     elseif ($preciovar0==2) {$salariovar1=1;
+     echo '<div id="button0"> <p> Salario sube por caída de precios </p> </div>';} else {$salariovar1=0;}
+   
+//2da vuelta   
+?>
+</div>
+
+<div id="col2"> 
+
+
+
+<?php
+
+if ($salariovar1 == 2) {$consumovar2=
+     2;
+     echo '<div id="button1" > <p> Consumo familiar cae por caída de salarios </p> </div>';
+     } 
+     elseif ($salariovar1 == 1) {$consumovar2=
+     1;
+     echo '<div id="button0"> <p> Consumo familiar sube por suba de salarios </p> </div>';
+     }       
+    else {$consumovar2=0;} 
+    
+if ($preciovar1 == 1) {$salariovar2=
+1; 
+     echo '<div id="button0"> <p>Salario cae por suba de precios </p> </div>';} 
+     elseif ($preciovar1==2) {$salariovar2=1;
+     echo '<div id="button0"> <p> Salario sube por caída de precios </p> </div> ';} else {$salariovar2=0;}
+        
+      
+        
+        
+        
+        
+      ?>
+    </p>
+  </body>
+</html> 
+
+
+
+
+
+
 ///armado de array: 
 
 $controlvar0= array ($preciovar0, $salariovar0,$consumovar0);
