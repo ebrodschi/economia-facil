@@ -1,3 +1,92 @@
+/// con columnas y botones 3 variables modifican de 1 variable y 2 ciclos
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link type='text/css' rel='stylesheet' href='style.css'/>
+    <title>PHP!</title>
+  </head>
+  <body>
+   
+  
+    
+    
+<div id="col1"> 
+
+
+
+ <?php       
+     
+$preciovar0=1;
+$salariovar0=1;
+$consumovar0=0; 
+
+$preciovar1=0;
+$salariovar1=0;
+$consumovar1=0; 
+
+$preciovar2=0;
+$salariovar2=0;
+$consumovar2=0; 
+
+
+
+if ($salariovar0 == 2) {$consumovar1=
+     2;
+     echo '<div id="button0">
+				<p> Consumo familiar cae por caída de salarios </p> </div>';
+     } 
+     elseif ($salariovar0 == 1) {$consumovar1=
+     1;
+     echo ' <div id="button0">
+				<p> Consumo familiar sube por suba de salarios </p> </div>';
+     }       
+    else {$consumovar1=0;} 
+    
+if ($preciovar0 == 1) {$salariovar1=
+2; 
+     echo '<div id="button0"> <p>  Salario cae por suba de precios </p> </div>';} 
+     elseif ($preciovar0==2) {$salariovar1=1;
+     echo '<div id="button0"> <p> Salario sube por caída de precios </p> </div>';} else {$salariovar1=0;}
+   
+//2da vuelta   
+?>
+</div>
+
+<div id="col1"> 
+
+
+
+<?php
+
+if ($salariovar1 == 2) {$consumovar2=
+     2;
+     echo '<div id="button0"> <p> Consumo familiar cae por caída de salarios </p> </div>';
+     } 
+     elseif ($salariovar1 == 1) {$consumovar2=
+     1;
+     echo '<div id="button0"> <p> Consumo familiar sube por suba de salarios </p> </div>';
+     }       
+    else {$consumovar2=0;} 
+    
+if ($preciovar1 == 1) {$salariovar2=
+1; 
+     echo '<div id="button0"> <p>Salario cae por suba de precios </p> </div>';} 
+     elseif ($preciovar1==2) {$salariovar2=1;
+     echo '<div id="button0"> <p> Salario sube por caída de precios </p> </div> ';} else {$salariovar2=0;}
+        
+      
+        
+        
+        
+        
+      ?>
+    </p>
+  </body>
+</html> 
+
+
+
 /// 3 variables modifican de 1 variable y 2 ciclos
 
  $preciovar0=1;
