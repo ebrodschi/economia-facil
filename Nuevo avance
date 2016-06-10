@@ -1,4 +1,175 @@
-//esta bien con variables globales e itera dentro de itera
+//esta bien con 4 variables globales e itera dentro de itera. Falta corregir algunas cosas
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link type='text/css' rel='stylesheet' href='style.css'/>
+    <title>PHP!</title>
+  </head>
+  <body>
+
+
+  
+  
+ <?php   
+    
+    function globalizar() {global $preciovar0, $salariovar0, $consumovar0, $ingempresasvar0, 
+    $preciovar1, $salariovar1,$consumovar1, $ingempresasvar1,
+    $preciovar2, $salariovar2,$consumovar2, $ingempresasvar2,
+    $preciovar3, $salariovar3, $consumovar3, $ingempresasvar3;}
+    
+    
+    global $preciovar0, $salariovar0, $consumovar0, $ingempresasvar0, $ingpub0, 
+    $preciovar1, $salariovar1,$consumovar1, $ingempresasvar1, $ingpub1,
+    $preciovar2, $salariovar2,$consumovar2, $ingempresasvar2,$ingpub2,
+    $preciovar3, $salariovar3, $consumovar3, $ingempresasvar3,$ingpub3;
+
+    
+    
+    $preciovar0=1;
+    $salariovar0=0;
+    $consumovar0=0; 
+    $ingempresasvar0=0;
+      
+    
+function itera0() {
+
+    global $preciovar0, $salariovar0, $consumovar0, $ingempresasvar0, $ingpub0, 
+    $preciovar1, $salariovar1,$consumovar1, $ingempresasvar1, $ingpub1,
+    $preciovar2, $salariovar2,$consumovar2, $ingempresasvar2,$ingpub2,
+    $preciovar3, $salariovar3, $consumovar3, $ingempresasvar3,$ingpub3;
+    
+    $controlvar0= array ($preciovar0, $salariovar0,$consumovar0);
+    $cuantosvar = array_search (0,$controlvar0,true);
+    $cuantosvarlin = $cuantosvar*100 . "%"; 
+    
+    if ($salariovar0 == 2) {$consumovar1=
+         2;
+         echo '<div id="col1">  <div id="button0">
+    				<p> Consumo familiar cae por caída de salarios </p> </div></div>';
+         } 
+         elseif ($salariovar0 == 1) {$consumovar1=
+         1;
+         echo ' <div id="col1"><div id="button0">
+    				<p> Consumo familiar sube por suba de salarios </p> </div></div>';
+         }       
+        else {$consumovar1=0;} 
+        
+    if ($preciovar0 == 1) {$salariovar1=
+    2; 
+         echo '<div id="col1"> <div id="button0"> <p>  Salario cae por suba de precios </p> </div></div>';}
+         elseif ($preciovar0==2) {$salariovar1=1;
+         echo '<div id="button0"> <p> Salario sube por caída de precios </p> </div>';} 
+         
+    if ($consumovar0 == 2) {$ingempresaconsumovar1=
+         2; $ingpub3=2;
+         echo '<div id="col1">';  
+    	 echo '<div id="button0">	<p> Ingresos de las Empresas caen por caída del consumo familiar </p> </div>';
+    	 echo '<div id="button1">	<p> Ingresos Públicos caen por caída del consumo familiar </p> </div>';
+         } 
+         elseif ($consumovar0 == 1) {$ingempresaconsumovar1=
+         1;
+         echo ' <div id="col1"><div id="button0">
+    				<p> Ingresos de las Empresas suben por suba del consumo familiar </p> </div></div>';}
+     
+         
+
+
+}  
+
+
+
+function itera1() {
+
+global $preciovar0, $salariovar0, $consumovar0, $ingempresasvar0, 
+    $preciovar1, $salariovar1,$consumovar1, $ingempresasvar1,
+    $preciovar2, $salariovar2,$consumovar2, $ingempresasvar2;
+    
+if ($salariovar1 == 2) {$consumovar2=
+     2;
+     echo  '<div id="col1"><div id="button0" > <p> Consumo familiar cae por caída de salarios </p> </div></div>';
+    echo  '</div>';
+          } 
+     elseif ($salariovar1 == 1) {$consumovar2=
+     1;
+     echo '<div id="col1"><div id="button0"> <p> Consumo familiar sube por suba de salarios </p> </div></div>';
+     }       
+    else {$consumovar2=0;} 
+    
+if ($preciovar1 == 1) {$salariovar2=
+1; 
+     echo '<div id="col1"><div id="button0"> <p>Salario cae por suba de precios </p> </div></div>';} 
+     elseif ($preciovar1==2) {$salariovar2=1;
+     echo '<div id="col1"><div id="button0"> <p> Salario sube por caída de precios </p> </div> </div>';} else {$salariovar2=0;}
+        
+if ($consumovar1 == 2) {$ingempresaconsumovar2=
+         2; $ingpub2=2;
+         echo '<div id="col1">';  
+    	 echo '<div id="button0">	<p> Ingresos de las Empresas caen por caída del consumo familiar </p> </div>';
+    	 echo '<div id="button1">	<p> Ingresos Públicos caen por caída del consumo familiar </p> </div>';
+         } 
+         elseif ($consumovar1 == 1) {$ingempresaconsumovar2=
+         1;
+         echo '<div id="col1">';  
+    	 echo '<div id="button0">	<p> Ingresos de las Empresas suben por suba del consumo familiar </p> </div>';
+    	 echo '<div id="button1">	<p> Ingresos Públicos suben por suba del consumo familiar </p> </div>';}
+      
+}
+
+
+
+
+function itera2() {
+
+global $preciovar0, $salariovar0, $consumovar0, $ingempresasvar0, 
+    $preciovar1, $salariovar1,$consumovar1, $ingempresasvar1,
+    $preciovar2, $salariovar2,$consumovar2, $ingempresasvar2,
+    $preciovar3, $salariovar3, $consumovar3, $ingempresasvar3;
+    
+if ($salariovar2 == 2) {$consumovar3=
+     2;
+     echo  '<div id="col1"><div id="button0" > <p> Consumo familiar cae por caída de salarios </p> </div></div>';
+    itera0();
+    echo  '</div>';
+          } 
+     elseif ($salariovar2 == 1) {$consumovar3=
+     1;
+     echo '<div id="col1"><div id="button0"> <p> Consumo familiar sube por suba de salarios </p> </div></div>';
+     }       
+    else {$consumovar3=0;} 
+    
+if ($preciovar2 == 1) {$salariovar3=
+1; 
+     echo '<div id="col1"><div id="button0"> <p>Salario cae por suba de precios </p> </div></div>';} 
+     elseif ($preciovar2==2) {$salariovar3=1;
+     echo '<div id="col1"><div id="button0"> <p> Salario sube por caída de precios </p> </div> </div>';} else {$salariovar3=0;}
+        
+if ($consumovar2 == 2) {$ingempresaconsumovar3=
+         2; $ingpub3=2;
+         echo '<div id="col1">';  
+    	 echo '<div id="button0">	<p> Ingresos de las Empresas caen por caída del consumo familiar </p> </div>';
+    	 echo '<div id="button1">	<p> Ingresos Públicos caen por caída del consumo familiar </p> </div>';
+         } 
+         elseif ($consumovar2 == 1) {$ingempresaconsumovar3=
+         1;
+         echo '<div id="col1">';  
+    	 echo '<div id="button0">	<p> Ingresos de las Empresas suben por suba del consumo familiar </p> </div>';
+    	 echo '<div id="button1">	<p> Ingresos Públicos suben por suba del consumo familiar </p> </div>';}
+      
+}
+  
+  
+        
+
+itera0();
+itera1();
+itera2();
+
+        
+      ?>
+    </p>
+  </body>
+</html> 
 
 <!DOCTYPE html>
 <html>
