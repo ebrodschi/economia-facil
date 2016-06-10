@@ -1,0 +1,100 @@
+//esta bien con variables globales e itera dentro de itera
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link type='text/css' rel='stylesheet' href='style.css'/>
+    <title>PHP!</title>
+  </head>
+  <body>
+
+
+  
+  
+ <?php   
+    
+    global $preciovar0, $salariovar0, $consumovar0,  
+    $preciovar1, $salariovar1,$consumovar1, 
+    $preciovar2, $salariovar2,$consumovar2;
+
+    
+    
+    
+    $preciovar0=1;
+    $salariovar0=0;
+    $consumovar0=0; 
+    
+      
+    
+function itera0() {
+
+    global $preciovar0, $salariovar0, $consumovar0,  
+    $preciovar1, $salariovar1,$consumovar1, 
+    $preciovar2, $salariovar2,$consumovar2;
+    
+    $controlvar0= array ($preciovar0, $salariovar0,$consumovar0);
+    $cuantosvar = array_search (0,$controlvar0,true);
+    $cuantosvarlin = $cuantosvar*100 . "%"; 
+    
+    if ($salariovar0 == 2) {$consumovar1=
+         2;
+         echo '<div id="col1">  <div id="button0">
+    				<p> Consumo familiar cae por caída de salarios </p> </div></div>';
+         } 
+         elseif ($salariovar0 == 1) {$consumovar1=
+         1;
+         echo ' <div id="col1"><div id="button0">
+    				<p> Consumo familiar sube por suba de salarios </p> </div></div>';
+         }       
+        else {$consumovar1=0;} 
+        
+    if ($preciovar0 == 1) {$salariovar1=
+    2; 
+         echo '<div id="col1"> <div id="button0"> <p>  Salario cae por suba de precios </p> </div></div>';}
+         elseif ($preciovar0==2) {$salariovar1=1;
+         echo '<div id="button0"> <p> Salario sube por caída de precios </p> </div>';} else {$salariovar1=0;}
+
+
+}  
+
+?>
+
+
+
+<?php
+
+function itera1() {
+
+global $preciovar0, $salariovar0, $consumovar0,  
+    $preciovar1, $salariovar1,$consumovar1, 
+    $preciovar2, $salariovar2,$consumovar2;
+    
+if ($salariovar1 == 2) {$consumovar2=
+     2;
+     echo  '<div id="col1"><div id="button0" > <p> Consumo familiar cae por caída de salarios </p> </div></div>';
+    itera0();
+    echo  '</div>';
+          } 
+     elseif ($salariovar1 == 1) {$consumovar2=
+     1;
+     echo '<div id="col1"><div id="button0"> <p> Consumo familiar sube por suba de salarios </p> </div></div>';
+     }       
+    else {$consumovar2=0;} 
+    
+if ($preciovar1 == 1) {$salariovar2=
+1; 
+     echo '<div id="col1"><div id="button0"> <p>Salario cae por suba de precios </p> </div></div>';} 
+     elseif ($preciovar1==2) {$salariovar2=1;
+     echo '<div id="col1"><div id="button0"> <p> Salario sube por caída de precios </p> </div> </div>';} else {$salariovar2=0;}
+        
+      
+}
+        
+
+itera0();
+itera1(); 
+        
+      ?>
+    </p>
+  </body>
+</html> 
