@@ -1,3 +1,47 @@
+//// intento de clase con objetos arrays
+
+class Variable {
+    
+          $variable = array ($nombre),array($tiempo,$variacion));
+          
+          function __construct($nombre) {
+          $this->nombre = $nombre;
+          }
+          
+          
+        }
+        
+        $interes = new Variable("Interes");
+        if (2==2) {
+          echo "Soy una persona, ";
+        }
+    
+    
+    
+    
+    $precio= array("Precio",array(0,1));
+    $salario= array("Salario",array(0,0));
+    
+    if ($precio [1][1] == 2) {$salario [1][1] = 1;
+         
+         echo '<div id="col1">  <div id="button0">';
+         echo  $salario[0]. " Sube" ; 
+         echo '</div></div>';
+    				
+         } 
+         elseif ($precio [1][1] == 1) {$salario [1][1] =
+         2;
+         echo '<div id="col1">  <div id="button0">';
+         echo  $salario[0]. " Baja" ; 
+         echo '</div></div>';;
+         }       
+    
+    
+
+
+
+
+
 ////html con arrays
 
 <!DOCTYPE html>
