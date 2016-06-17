@@ -12,7 +12,7 @@
  <?php   
 
 
-global $var1,$var;
+global $var1,$var2;
      
     
     function relacioninv ($var1,$var2) {
@@ -21,14 +21,14 @@ global $var1,$var;
         
     for($i=1; $i< count($var1); $i++) {
           
-    if ($var1 [$i] == 2) {$var2[$i++] = 1;
+    if ($var1 [$i] == 2) {$var2[++$i] = 1;
          
          echo '<div id="col1">  <div id="button0">';
          echo  $var2[0]. " Sube" ; 
          echo '</div></div>';
     		
          } 
-         elseif ($var1 [$i] == 1) { $var2 [$i++] =
+         elseif ($var1 [$i] == 1) { $var2 [++$i] =
          2;
          echo '<div id="col1">  <div id="button0">';
          echo  $var2[0]. " Baja" ; 
@@ -39,21 +39,20 @@ global $var1,$var;
     
     function relacionpos ($var1,$var2) {
         
-    global $var1;$var2;
-    
+        
     for($i=1; $i< count($var1); $i++) {
           
-    if ($var1 [$i] == 2) {$var2[$i+1] = 2;
+    if ($var1 [$i] == 2) {$var2[++$i] = 2;
          
          echo '<div id="col1">  <div id="button0">';
          echo  $var2[0]. " Cae" ; 
          echo '</div></div>';
     		
          } 
-         elseif ($var1 [$i] == 1) { $var2 [$i+1] =
+         elseif ($var1 [$i] == 1) { $var2 [++$i] =
          1;
          echo '<div id="col1">  <div id="button0">';
-         echo  $var2[0]. " Sube" ; 
+         echo  $var2[0]. " Sube" . $var2[2] ; 
          echo '</div></div>';;
          }      } 
          
@@ -61,12 +60,12 @@ global $var1,$var;
     
     global $precio,$salario,$consumo,$ingpublico;
     
-    $precio= array("Precio",1,0,0,0,0,0,0,0,0,0);
+    $precio= array("Precio",0,0,0,0,0,0,0,0,0,0);
     $salario= array("Salario",1,0,0,0,0,0,0,0,0,0);
     $consumo= array("Consumo",0,0,0,0,0,0,0,0,0,0);
     $ingpublico= array("Ingreso Público",0,0,0,0,0,0,0,0,0,0);
     
-    relacioninv ($salario, $consumo);
+    relacionpos ($salario, $consumo);
     
     
     echo $salario [1];
