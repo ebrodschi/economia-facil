@@ -11,21 +11,33 @@
   
  <?php   
     
-    $preciovar0=1;
-    $salariovar0=0;
-    $variables= array($preciovar0,$salariovar0);
- 
-
-        
-function itera0($variables) {
-
+    $precio= array("Precio",1,0,0,0,0,0,0,0,0,0);
+    $salario= array("Salario",0,0,0,0,0,0,0,0,0,0);
+    $consumo= array("Consumo",0,0,0,0,0,0,0,0,0,0);
     
     
-    if ($variables[0]==1) {$variables[1]=2;
+   
+    $variables= array( "precio"=>$precio,"salario"=>$salario,"consumo"=>$consumo);
+    
+    function relacioninv ($var1,$var2) {
+            
+    
+          
+    if ($var1 == 2) {$var2 = 1;
+           } 
+         elseif ($var1 == 1) { $var2 =
+         2;  }  
          
-         } 
-         
-return $variables=array($variables[0], $variables[1]) ;
+         return $var2;
+            }
+    
+    function itera0($variables) {
+    
+    
+    $variables["salario"][2]=relacioninv($variables["precio"][1],$variables["salario"][2]);
+    $variables["consumo"][3]=relacioninv($variables["salario"][2],$variables["consumo"][3]);
+    
+return $variables ;
 
 } 
           
@@ -33,9 +45,31 @@ return $variables=array($variables[0], $variables[1]) ;
 
 $variables=itera0($variables);
 
+function agregavar($variables,$tiempo) {
 
-echo $variables[1];
-echo $variables[0];
+foreach ($variables as $variable=>$nombre) {
+
+        
+    if ($variables [$variable][$tiempo] == 2) {
+         
+         echo '<div id="col1">  <div id="button0">
+    				<p> Variable Baja </p> </div></div>';
+    		
+         } 
+         
+         if ($variables [$variable][$tiempo] == 1) {
+             
+            	echo '<div id="col1">  <div id="button0"> <p> '; 
+                echo $variables [$variable][0] . " Sube";
+                echo ' </p></div></div>';
+    		    
+    		
+         }}}
+
+agregavar($variables,1);
+        
+
+
 
       ?>
       
@@ -44,6 +78,3 @@ echo $variables[0];
     </p>
   </body>
 </html> 
-
-      ?>
-      
