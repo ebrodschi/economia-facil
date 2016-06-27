@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link type='text/css' rel='stylesheet' href='style.css'/>
+    <title>PHP!</title>
+  </head>
+  <body>
+
+
+  
+  
+ <?php   
+    
+    $preciovar0=1;
+    $salariovar0=0;
+    $variables= array($preciovar0,$salariovar0);
+ 
+
+        
+function itera0($variables) {
+
+    
+    
+    if ($variables[0]==1) {$variables[1]=2;
+         
+         } 
+         
+return $variables=array($variables[0], $variables[1]) ;
+
+} 
+          
+
+
+$variables=itera0($variables);
+
+
+echo $variables[1];
+echo $variables[0];
+
+      ?>
+      
+      
+
+    </p>
+  </body>
+</html> 
+
+      ?>
+      
