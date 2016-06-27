@@ -14,10 +14,10 @@
     $precio= array("Precio",1,0,0,0,0,0,0,0,0,0);
     $salario= array("Salario",0,0,0,0,0,0,0,0,0,0);
     $consumo= array("Consumo",0,0,0,0,0,0,0,0,0,0);
-    
+    $ingempresas= array("Ingresos de las Empresas",0,0,0,0,0,0,0,0,0,0);
     
    
-    $variables= array( "precio"=>$precio,"salario"=>$salario,"consumo"=>$consumo);
+    $variables= array( "precio"=>$precio,"salario"=>$salario,"consumo"=>$consumo, "ingempresas"=>$ingempresas);
     
     function relacioninv ($var1,$var2) {
             
@@ -48,6 +48,8 @@
     $variables["salario"][$tiempo+1]=relacioninv($variables["precio"][$tiempo],$variables["salario"][$tiempo+1]);
     
     $variables["consumo"][$tiempo+1]=relacionpos($variables["salario"][$tiempo],$variables["consumo"][$tiempo+1]);
+    
+    $variables["ingempresas"][$tiempo+1]=relacionpos($variables["consumo"][$tiempo],$variables["ingempresas"][$tiempo+1]);
 
 return $variables ;
 
@@ -55,7 +57,7 @@ return $variables ;
           
 
 
-$variables=itera($variables,1);
+
 
 function agregavar($variables,$tiempo) {
 
@@ -80,17 +82,67 @@ foreach ($variables as $variable=>$nombre) {
          }}}
 
 
-agregavar($variables,1);
+$variables=itera($variables,1);
 
 
+foreach ($variables as $variable=>$nombre) {
+
+        
+    if ($variables [$variable][1] == 2) {
+         
+         echo '<div id="col1">  <div id="button0"> <p>';
+    	 echo $variables [$variable][0] . " Baja";			
+    	 echo ' </p></div></div>';
+    	 $variables=itera($variables,2);
+         agregavar($variables,2);
+    		
+         } 
+         
+         if ($variables [$variable][1] == 1) {
+             
+            	echo '<div id="col1">  <div id="button0"> <p> '; 
+                echo $variables [$variable][0] . " Sube";
+                echo ' </p></div></div>';
+    		    $variables=itera($variables,2);
+                agregavar($variables,2);
+    		
+         }}
+
+foreach ($variables as $variable=>$nombre) {
+
+        
+    if ($variables [$variable][2] == 2) {
+         
+         $variables=itera($variables,3);
+         agregavar($variables,3);
+    		
+         } 
+         
+         if ($variables [$variable][2] == 1) {
+             
+            	$variables=itera($variables,3);
+                agregavar($variables,3);
+    		
+         }}
+
+foreach ($variables as $variable=>$nombre) {
+
+        
+    if ($variables [$variable][3] == 2) {
+         
+         $variables=itera($variables,4);
+         agregavar($variables,4);
+    		
+         } 
+         
+         if ($variables [$variable][3] == 1) {
+             
+            	$variables=itera($variables,4);
+                agregavar($variables,4);
+    		
+         }}
 
 
-
-$variables=itera($variables,2);
-agregavar($variables,2);
-
-$variables=itera($variables,3);
-agregavar($variables,3);
 
 
       ?>
