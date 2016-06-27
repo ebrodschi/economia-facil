@@ -31,10 +31,23 @@
          return $var2;
             }
     
+    function relacionpos ($var1,$var2) {
+            
+    
+          
+    if ($var1 == 2) {$var2 = 2;
+           } 
+         elseif ($var1 == 1) { $var2 =
+         1;  }  
+         
+         return $var2;
+            }
+    
     function itera($variables,$tiempo) {
     
     $variables["salario"][$tiempo+1]=relacioninv($variables["precio"][$tiempo],$variables["salario"][$tiempo+1]);
-    $variables["consumo"][$tiempo+1]=relacioninv($variables["salario"][$tiempo],$variables["consumo"][$tiempo+1]);
+    
+    $variables["consumo"][$tiempo+1]=relacionpos($variables["salario"][$tiempo],$variables["consumo"][$tiempo+1]);
 
 return $variables ;
 
@@ -66,12 +79,18 @@ foreach ($variables as $variable=>$nombre) {
     		
          }}}
 
+
 agregavar($variables,1);
+
+
+
+
 
 $variables=itera($variables,2);
 agregavar($variables,2);
 
-
+$variables=itera($variables,3);
+agregavar($variables,3);
 
 
       ?>
