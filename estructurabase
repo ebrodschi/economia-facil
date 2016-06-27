@@ -15,9 +15,9 @@
     $salario= array("Salario",0,0,0,0,0,0,0,0,0,0);
     $consumo= array("Consumo",0,0,0,0,0,0,0,0,0,0);
     $ingempresas= array("Ingresos de las Empresas",0,0,0,0,0,0,0,0,0,0);
-    
+    $ingpublicos= array("Ingresos Públicos",0,0,0,0,0,0,0,0,0,0);
    
-    $variables= array( "precio"=>$precio,"salario"=>$salario,"consumo"=>$consumo, "ingempresas"=>$ingempresas);
+    $variables= array( "precio"=>$precio,"salario"=>$salario,"consumo"=>$consumo, "ingempresas"=>$ingempresas,"ingpublicos"=>$ingpublicos);
     
     function relacioninv ($var1,$var2) {
             
@@ -50,6 +50,9 @@
     $variables["consumo"][$tiempo+1]=relacionpos($variables["salario"][$tiempo],$variables["consumo"][$tiempo+1]);
     
     $variables["ingempresas"][$tiempo+1]=relacionpos($variables["consumo"][$tiempo],$variables["ingempresas"][$tiempo+1]);
+
+    $variables["ingpublicos"][$tiempo+1]=relacionpos($variables["consumo"][$tiempo],$variables["ingempresas"][$tiempo+1]);
+
 
 return $variables ;
 
