@@ -31,19 +31,18 @@
          return $var2;
             }
     
-    function itera0($variables) {
+    function itera($variables,$tiempo) {
     
-    
-    $variables["salario"][2]=relacioninv($variables["precio"][1],$variables["salario"][2]);
-    $variables["consumo"][3]=relacioninv($variables["salario"][2],$variables["consumo"][3]);
-    
+    $variables["salario"][$tiempo+1]=relacioninv($variables["precio"][$tiempo],$variables["salario"][$tiempo+1]);
+    $variables["consumo"][$tiempo+1]=relacioninv($variables["salario"][$tiempo],$variables["consumo"][$tiempo+1]);
+
 return $variables ;
 
 } 
           
 
 
-$variables=itera0($variables);
+$variables=itera($variables,1);
 
 function agregavar($variables,$tiempo) {
 
@@ -52,8 +51,9 @@ foreach ($variables as $variable=>$nombre) {
         
     if ($variables [$variable][$tiempo] == 2) {
          
-         echo '<div id="col1">  <div id="button0">
-    				<p> Variable Baja </p> </div></div>';
+         echo '<div id="col1">  <div id="button0"> <p>';
+    	 echo $variables [$variable][0] . " Baja";			
+    	 echo ' </p></div></div>';		
     		
          } 
          
@@ -67,7 +67,10 @@ foreach ($variables as $variable=>$nombre) {
          }}}
 
 agregavar($variables,1);
-        
+
+$variables=itera($variables,2);
+agregavar($variables,2);
+
 
 
 
