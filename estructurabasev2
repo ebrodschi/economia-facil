@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link type='text/css' rel='stylesheet' href='style.css'/>
+    <title>PHP!</title>
+  </head>
+  <body>
+
+
+  
+  
+ <?php   
+    
+    $precio= array("Precio",0,0,0,0,0,0,0,0,0,0);
+        $salario= array("Salario",0,0,0,0,0,0,0,0,0,0);
+    $consumo= array("Consumo",0,0,0,0,0,0,0,0,0,0);
+    $ingempresas= array("Ingresos de las Empresas",0,0,0,0,0,0,0,0,0,0);
+    $ingpublicos= array("Ingresos Públicos",0,0,0,0,0,0,0,0,0,0);
+   
+    $precio[1]=1;
+    
+    $variables= array( "precio"=>$precio,"salario"=>$salario,"consumo"=>$consumo, "ingempresas"=>$ingempresas,"ingpublicos"=>$ingpublicos);
+    
+    
+    
+    
+    function relacioninv ($var1,$var2) {
+            
+    
+          
+    if ($var1 == 2) {$var2 = 1;
+        
+           } 
+         elseif ($var1 == 1) { $var2 =
+         2; 
+         
+         }  
+         
+         return $var2;
+            }
+    
+    function relacionpos ($var1,$var2) {
+            
+    
+          
+    if ($var1 == 2) {$var2 = 2;
+    
+           } 
+         elseif ($var1 == 1) { $var2 =
+         1;  
+        
+         }  
+         
+         return $var2;
+            }
+    
+    function itera($variables,$tiempo) {
+    
+    $variables["salario"][$tiempo+1]=relacioninv($variables["precio"][$tiempo],$variables["salario"][$tiempo+1]);
+    
+    
+    
+    $variables["consumo"][$tiempo+1]=relacionpos($variables["salario"][$tiempo],$variables["consumo"][$tiempo+1]);
+    
+    
+    
+    $variables["ingempresas"][$tiempo+1]=relacionpos($variables["consumo"][$tiempo],$variables["ingempresas"][$tiempo+1]);
+    
+    
+
+    $variables["ingpublicos"][$tiempo+1]=relacionpos($variables["consumo"][$tiempo],$variables["ingpublicos"][$tiempo+1]);
+    
+    
+
+
+return $variables ;
+
+} 
+          
+Function agregavar($variables,$tiempo) {
+
+
+
+foreach ($variables as $variable=>$nombre) {
+
+
+   
+    if ($variables [$variable][$tiempo] == 2) {
+         
+         
+         echo ' <div id="longcol"><div id="fila1"><div id="colfila"> <div id="button0"><p>';
+    	 echo $variables [$variable][0] . " Baja";			
+    	 echo ' </p> <br />';		
+    	 
+    	 
+    	 $variables=itera($variables,$tiempo+1);
+    	 agregavar($variables,$tiempo+1); 
+    	 echo ' </p> <br />';	
+         } 
+         
+       
+         if ($variables [$variable][$tiempo] == 1) {
+             
+            echo ' <div id="longcol"><div id="fila1"><div id="colfila"> <div id="button0"><p>';
+            echo $variables [$variable][0] . " Sube";
+            echo ' </p> <br />';	 		
+    	 $variables=itera($variables,$tiempo+1);
+    	 agregavar($variables,$tiempo+1); 
+    	    
+    	    
+    	    }
+    	    
+}	
+ 
+
+         }
+
+$variables=itera($variables,1);
+agregavar($variables,1);
+
+
+
+       ?>
+      
+      
+
+    </p>
+  </body>
+</html> 
+
+
+
+
+
+
+////css
+
+
+
+
+h1 {
+    font-family: Verdana, sans-serif;
+    font-size: 18px;
+    text-align: center;
+    color: #ffffff;
+}
+
+p {
+    font-family: Tahoma, sans-serif;
+}
+
+li {
+    font-family: Tahoma, sans-serif;
+    list-style-type: square;
+}
+
+#longcol {
+    
+    position: relative;
+    float:left;
+    border: 2px solid blue;
+    height: 100px;
+    margin-top: 0%;
+        }
+
+#button0{
+	float: left;
+	border: 2px solid #000000;
+    border-radius: 5px;
+    position: relative;
+	background-color: #cc0323;
+	height: 100%;
+	font-size: 1 em;
+	color: white;
+	font-family: Tahoma, sans-serif;
+	}
+
+
+#button0 p{
+    
+	font-size: 1 em;
+	color: black;
+	
+
+}
+
+
+
+#fila1 {
+    
+    
+    position: relative;
+    float: left;
+    height: auto;
+	width: 80%;
+	border: 2px solid green;
+	margin-left: 100%;
+
+}
+
+#colfila {
+    
+    
+    
+    position: relative;
+    float:left;
+    height: auto;
+    border-radius: 5px;
+	border: 2px solid yellow;
+	
+	
+}
+
+
+
+#button1 p{
+    position: relative;
+	font-size: 1em;
+	color: white;
+
+}
