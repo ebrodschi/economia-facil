@@ -6,13 +6,14 @@
   </head>
   <body>
 
-
-  
+<br> <br><br>
+<br>
+<br>
   
  <?php   
     
     $precio= array("Precio",0,0,0,0,0,0,0,0,0,0);
-        $salario= array("Salario",0,0,0,0,0,0,0,0,0,0);
+    $salario= array("Salario",0,0,0,0,0,0,0,0,0,0);
     $consumo= array("Consumo",0,0,0,0,0,0,0,0,0,0);
     $ingempresas= array("Ingresos de las Empresas",0,0,0,0,0,0,0,0,0,0);
     $ingpublicos= array("Ingresos Públicos",0,0,0,0,0,0,0,0,0,0);
@@ -79,7 +80,7 @@ return $variables ;
           
 Function agregavar($variables,$tiempo) {
 
-
+echo ' <div id="longcol"><p>';
 
 foreach ($variables as $variable=>$nombre) {
 
@@ -88,22 +89,22 @@ foreach ($variables as $variable=>$nombre) {
     if ($variables [$variable][$tiempo] == 2) {
          
          
-         echo ' <div id="longcol"><div id="fila1"><div id="colfila"> <div id="button0"><p>';
+         echo ' <div id="button0"><p>';
     	 echo $variables [$variable][0] . " Baja";			
-    	 echo ' </p> <br />';		
+    	 echo ' </p> </div> ';		
     	 
     	 
     	 $variables=itera($variables,$tiempo+1);
     	 agregavar($variables,$tiempo+1); 
-    	 echo ' </p> <br />';	
+    	 echo ' </p> </div> ';	
          } 
          
        
          if ($variables [$variable][$tiempo] == 1) {
              
-            echo ' <div id="longcol"><div id="fila1"><div id="colfila"> <div id="button0"><p>';
+            echo '  <div id="button0"><p>';
             echo $variables [$variable][0] . " Sube";
-            echo ' </p> <br />';	 		
+            echo ' </p> </div>';	 		
     	 $variables=itera($variables,$tiempo+1);
     	 agregavar($variables,$tiempo+1); 
     	    
@@ -114,6 +115,8 @@ foreach ($variables as $variable=>$nombre) {
  
 
          }
+
+
 
 $variables=itera($variables,1);
 agregavar($variables,1);
@@ -127,95 +130,3 @@ agregavar($variables,1);
     </p>
   </body>
 </html> 
-
-
-
-
-
-
-////css
-
-
-
-
-h1 {
-    font-family: Verdana, sans-serif;
-    font-size: 18px;
-    text-align: center;
-    color: #ffffff;
-}
-
-p {
-    font-family: Tahoma, sans-serif;
-}
-
-li {
-    font-family: Tahoma, sans-serif;
-    list-style-type: square;
-}
-
-#longcol {
-    
-    position: relative;
-    float:left;
-    border: 2px solid blue;
-    height: 100px;
-    margin-top: 0%;
-        }
-
-#button0{
-	float: left;
-	border: 2px solid #000000;
-    border-radius: 5px;
-    position: relative;
-	background-color: #cc0323;
-	height: 100%;
-	font-size: 1 em;
-	color: white;
-	font-family: Tahoma, sans-serif;
-	}
-
-
-#button0 p{
-    
-	font-size: 1 em;
-	color: black;
-	
-
-}
-
-
-
-#fila1 {
-    
-    
-    position: relative;
-    float: left;
-    height: auto;
-	width: 80%;
-	border: 2px solid green;
-	margin-left: 100%;
-
-}
-
-#colfila {
-    
-    
-    
-    position: relative;
-    float:left;
-    height: auto;
-    border-radius: 5px;
-	border: 2px solid yellow;
-	
-	
-}
-
-
-
-#button1 p{
-    position: relative;
-	font-size: 1em;
-	color: white;
-
-}
