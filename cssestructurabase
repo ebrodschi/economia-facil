@@ -1,3 +1,19 @@
+#comienzo{
+	border: 2px solid #000000;
+    position: relative;
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    margin-right: 1%;
+    font-size: 1 em;
+	color: white;
+	font-family: Tahoma, sans-serif;
+	width: 800px;
+	height: 75px;
+	}
+
 .header {
     width: 300px;
     height: 25px;
@@ -30,33 +46,7 @@ input {
     width: 280px;
 }
 
-#button0{
-	float: top;
-	border: 2px solid #000000;
-    border-radius: 5px;
-    position: relative;
-	left: 0%;
-	
-	text-align: center;
-	vertical-align: middle;
-	margin-top: 1%;
-    margin-bottom: 1%;
-    margin-left: 1%;
-    margin-right: 1%;
-    font-size: 1 em;
-	color: black;
-	font-family: Tahoma, sans-serif;
-	}
 
-
-#button0 p{
-    position: relative;
-	font-size: 1 em;
-	color: black;
-	text-align: center;
-	vertical-align: middle;
-
-}
 
 #col1 {
     
@@ -83,11 +73,12 @@ input {
     position: relative;
     float: top;
     text-align: center;
+	border: 2px solid green;
 	vertical-align: middle;
 	height: 200px;
-	width: 200px;
-    border: 2px solid yellow;
-    margin-top: 1%;
+	width: 800px;
+	background-color: white;
+	margin-top: 1%;
     margin-bottom: 1%;
     margin-left: 1%;
     margin-right: 1%;
@@ -102,30 +93,54 @@ input {
     position: relative;
     float:left;
     border-radius: 5px;
-	background-color: brown;
-	border: 5px solid yellow;
+	background-color: green;
 	height: auto;
 	width: 75px;
 	text-align: center;
 	vertical-align: middle;
-    margin-top: 1%;
+	margin-top: 1%;
     margin-bottom: 1%;
     margin-left: 1%;
     margin-right: 1%;
-	
+	border: 2px solid blue;
 }
+
+#button0{
+	border: 2px solid #000000;
+    border-radius: 5px;
+    position: relative;
+	left: 0%;
+	background-color: #cc0323;
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    margin-right: 1%;
+    font-size: 1 em;
+	color: white;
+	font-family: Tahoma, sans-serif;
+	width: 75px;
+	}
+
+
+#button0 p{
+    position: relative;
+	font-size: 1 em;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+
+}
+
+
 #longcol {
     
     position: relative;
-    float:left;
-    border: 5px solid green; 
-    height: auto;
-	width: auto;
+    left: 100px;
+    bottom: 90px;
+    border: 2px solid red;
     
-    margin-top: 1%;
-    margin-bottom: 1%;
-    margin-left: 1%;
-    margin-right: 1%;
         }
 
 
