@@ -102,7 +102,7 @@ foreach ($variables as $variable=>$nombre) {
     	 $variables [$variable][$tiempo]=0;
     	 $variables=itera($variables,$tiempo);
     	 
-    	 echo $variables ["ingpublicos"][4];
+    	 
     	 
     	 $variables=itera($variables,$tiempo+1);
     	 agregavar($variables,$tiempo+1); 
