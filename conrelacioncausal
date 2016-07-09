@@ -1,0 +1,221 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link type='text/css' rel='stylesheet' href='style.css'/>
+    <title>PHP!</title>
+  </head>
+  <body>
+
+<br> <br><br>
+<br>
+<br>
+  
+ <?php   
+    
+    
+   
+    
+    $precio= array("Precio",array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
+    $salario= array("Salario",array (0,0),array (0,0),array (0,),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
+    $consumo= array("Consumo",array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,));
+    $ingempresas= array("Ingresos de las Empresas",array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,));
+    $ingpublicos= array("Ingresos Públicos",array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,));
+    $ahorrofam= array("Ahorro Familiar",array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,));
+    
+   
+    $precio[1][0]=1;
+   
+    
+    
+     $variables= array( "precio"=>$precio,"salario"=>$salario,"consumo"=>$consumo, "ingempresas"=>$ingempresas,"ingpublicos"=>$ingpublicos, "ahorrofam"=>$ahorrofam);
+    
+    
+    function relacioninv ($var1,$var2) {
+            
+    
+          
+    if ($var1 == 2) {$var2 = 1;
+    
+        
+        
+           } 
+         elseif ($var1 == 1) { $var2 = 2; 
+         
+         
+         }  
+         
+         return $var2;
+         
+            }
+    
+    function relacionpos ($var1,$var2) {
+            
+    
+          
+    if ($var1 == 2) {$var2 = 2;
+        
+        
+           } 
+         elseif ($var1 == 1) { $var2 = 1;  
+         
+        
+         }  
+         
+         return $var2; 
+         
+            }
+
+function relacioncausal ($var1,$nomvar1) {
+            
+    
+          
+    if ($var1 <>  0) {return $nomvar1;
+        
+        
+           } 
+         
+          
+         
+            }
+
+ 
+
+    
+    function itera($variables,$tiempo) {
+    
+    $variables["salario"][$tiempo+1][0]=relacioninv($variables["precio"][$tiempo][0],$variables["salario"][$tiempo+1][0]);
+    
+   
+   $variables["salario"][$tiempo+1][1]=relacioncausal($variables["precio"][$tiempo][0],$variables["precio"][0]);
+    
+    $variables["consumo"][$tiempo+1][0]=relacionpos($variables["salario"][$tiempo][0],$variables["consumo"][$tiempo+1][0]);
+    
+    $variables["consumo"][$tiempo+1][1]=relacioncausal($variables["salario"][$tiempo][0],$variables["salario"][0]);
+    
+    
+    
+    $variables["ingempresas"][$tiempo+1][0]=relacionpos($variables["consumo"][$tiempo][0],$variables["ingempresas"][$tiempo+1][0]);
+    
+$variables["ingempresas"][$tiempo+1][1]=relacioncausal($variables["consumo"][$tiempo][0],$variables["consumo"][0]);    
+
+    $variables["ingpublicos"][$tiempo+1][0]=relacionpos($variables["consumo"][$tiempo][0],$variables["ingpublicos"][$tiempo+1][0]);
+    
+    $variables["ingpublicos"][$tiempo+1][1]=relacioncausal($variables["consumo"][$tiempo][0],$variables["consumo"][0]);
+   
+    
+    $variables["ahorrofam"][$tiempo+1][0]=relacionpos($variables["salario"][$tiempo][0],$variables["ahorrofam"][$tiempo+1][0]);
+    
+    $variables["ahorrofam"][$tiempo+1][1]=relacioncausal($variables["salario"][$tiempo][0],$variables["salario"][0]);
+
+    
+return $variables ;
+
+} 
+          
+Function agregavar($variables,$tiempo) {
+
+echo ' <div id="longcol"><p>';
+
+foreach ($variables as $variable=>$nombre) {
+
+
+   
+    if ($variables [$variable][$tiempo][0] == 2) {
+         
+         
+         echo ' <div id="button0"><p>';
+    	 echo $variables [$variable][0] . " Baja";			
+    	 echo ' </p> </div> ';		
+    	
+    	 
+    	 
+    	 
+    	 echo ' </p> </div> ';
+    	 
+    	 
+    	 
+         } 
+         
+       
+         if ($variables [$variable][$tiempo][0] == 1) {
+             
+            echo '  <div id="button0"><p>';
+            echo $variables [$variable][0] . " Sube";
+            echo ' </p> </div>';	 		
+    	 
+    	 
+    	
+    	    
+    	    
+    	    }
+    	    
+}	
+ 
+
+         }
+
+
+
+
+
+
+
+
+ 
+    
+ 
+for ($tiempo = 1; $tiempo <  5; ++$tiempo) {
+    
+    $variables=itera($variables,$tiempo);
+    
+    echo ' <div id="longcol"><p>';
+    
+    foreach ($variables as $variable=>$nombre) {
+        
+        if ($variables [$variable][$tiempo][0] == 2) {
+         
+         
+         
+         echo ' <div id="button0"><p>';
+    	 echo $variables [$variable][0] . " Baja";			
+    	 echo ' </p> </div> ';		
+    	
+    	 	
+    	    	 
+         } 
+        
+        
+         if ($variables [$variable][$tiempo][0] == 1) {
+             
+             
+             
+            echo '  <div id="button0"><p>';
+            echo $variables [$variable][0] . " Sube";
+            echo ' </p> </div>';	 		
+    	 
+    
+    
+    
+    	    }
+        } 
+        
+}
+    
+
+echo $variables["salario"][2][1];
+echo $variables["ahorrofam"][3][1];
+
+    
+       ?>
+      
+     
+    $causal=$var2[$var1];
+         $causales[] = $causal;
+         echo $causales[0];
+
+
+    </p>
+  </body>
+</html> 
