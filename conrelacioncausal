@@ -204,18 +204,53 @@ for ($tiempo = 1; $tiempo <  5; ++$tiempo) {
 }
     
 
-echo $variables["salario"][2][1];
-echo $variables["ahorrofam"][3][1];
 
-    
+
+
+
+
+
+
+$modifico=array();
+
+foreach ($variables as $variable=>$nombre) {
+        
+        if ($variables [$variable][3][1] === "Salario") {
+
+
+array_push ($modifico, "1");
+
+}  
+
+}
+
+if (array_sum ($modifico )==0) {echo "Ninguna vez";}
+if (array_sum ($modifico )==1) {echo "1 vez";}
+if (array_sum ($modifico )==2) {echo "2 veces";}
+
+
+
        ?>
       
-     
-    $causal=$var2[$var1];
-         $causales[] = $causal;
-         echo $causales[0];
-
-
     </p>
   </body>
 </html> 
+
+
+foreach ($variables as $variable=>$nombre) {
+        
+        $resultado = array_unique($variables[$variable][4]);
+        print_r($resultado);
+        
+        
+}   
+
+
+
+
+$resultado = array_unique($variables["Consumo"][3]);
+
+print_r($resultado);
+
+echo $variables["salario"][2][1];
+echo $variables["ahorrofam"][3][1];
