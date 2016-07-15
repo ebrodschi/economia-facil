@@ -6,6 +6,8 @@
   </head>
   <body>
 
+<!– dejo espacio para que el primer boton aparezca mas centrado en verticalmente en la pantalla–>
+
 <br> <br><br>
 <br> <br><br>
 <br> <br><br>
@@ -14,7 +16,7 @@
   
  <?php   
     
-    
+/*  Defino las variables del modelo económico, el primer argumento es el nombre, los siguientes representan distintos tiempos y dentro de cada tiempo hay un array que contiene el estado de la variable y el nombre de la variable que causó su variación de estado */    
    
     
     $precio= array("Precio",array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
@@ -25,13 +27,21 @@
     $ahorrofam= array("Ahorro Familiar",array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
     
    
-    $precio[1][0]=2;
+   
+/* Modifico el estado de una variable para dar comienzo a la ejecución del modelo   */ 
+    
+$salario[1][0]=2;
+
     
     
    
-    
+   /* Creo la matriz general, el arrays con todas las variables  */  
     
      $variables= array( "precio"=>$precio,"salario"=>$salario,"consumo"=>$consumo, "ingempresas"=>$ingempresas,"ingpublicos"=>$ingpublicos, "ahorrofam"=>$ahorrofam);
+    
+    
+    
+    /* Defino las relaciones generales positivas e inversas */ 
     
     
     function relacioninv ($var1,$var2,$nomvar) {
@@ -69,7 +79,7 @@
          
             }
 
-
+/* Acá doy forma al modelo, esta funcion contiene todas las relaciones entre las distintas variables */ 
     
     function itera($variables,$tiempo) {
     
@@ -90,7 +100,13 @@ $variables["ingempresas"][$tiempo+1]=relacionpos($variables["consumo"][$tiempo][
 
 } 
           
+
+/* Esta funcion es la que ejecuta la parte visual, va agregando los botones ordenamente */ 
+
 Function agregavar($variables,$tiempo,$vario) {
+
+
+/* Lo que sigue sirve para ordenar verticalmente, si una variable modifica a dos variables, tira la div siguiente más para arriba con longcol2 en vez de longcol1 */ 
 
 $modifico=array();
 
@@ -115,6 +131,8 @@ if (array_sum ($modifico )==1) {
 if (array_sum ($modifico )==2) {
     
     echo ' <div id="longcol2"><p>';}
+
+
 
 
 foreach ($variables as $variable=>$nombre) {
@@ -158,6 +176,7 @@ foreach ($variables as $variable=>$nombre) {
 
                     }
 
+/* Corro el modelo. Itero primero en todos los tiempos disponibles y luego mando el agregavar para mostrar los resultados*/
 
 
 for ($tiempo = 1; $tiempo <  5; ++$tiempo) {
@@ -170,46 +189,10 @@ agregavar($variables, 1,0);
 
 
 
-$modifico=array();
 
-foreach ($variables as $variable=>$nombre) {
-        
-        if ($variables [$variable][3][1] === "Salario") {
-
-
-array_push ($modifico, "1");
-
-}  
-
-}
-
-if (array_sum ($modifico )==0) {echo "Ninguna vez";}
-if (array_sum ($modifico )==1) {echo "1 vez";}
-if (array_sum ($modifico )==2) {echo "2 veces";}
-
-echo $variables["salario"][2][1];
 
        ?>
       
     </p>
   </body>
 </html> 
-
-
-foreach ($variables as $variable=>$nombre) {
-        
-        $resultado = array_unique($variables[$variable][4]);
-        print_r($resultado);
-        
-        
-}   
-
-
-
-
-$resultado = array_unique($variables["Consumo"][3]);
-
-print_r($resultado);
-
-echo $variables["salario"][2][1];
-echo $variables["ahorrofam"][3][1];
