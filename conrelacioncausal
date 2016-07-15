@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,13 +17,15 @@
     
     $precio= array("Precio",array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
     $salario= array("Salario",array (0,0),array (0,0),array (0,),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
-    $consumo= array("Consumo",array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,));
-    $ingempresas= array("Ingresos de las Empresas",array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,));
-    $ingpublicos= array("Ingresos Públicos",array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,));
-    $ahorrofam= array("Ahorro Familiar",array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,),array (0,));
+    $consumo= array("Consumo",array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0));
+    $ingempresas= array("Ingresos de las Empresas",array (0,0),array (0,),array (0,),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
+    $ingpublicos= array("Ingresos Públicos",array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
+    $ahorrofam= array("Ahorro Familiar",array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
     
    
-    $precio[1][0]=1;
+    $precio[1][0]=2;
+    
+    
    
     
     
@@ -94,8 +94,6 @@ function relacioncausal ($var1,$nomvar1) {
     
     $variables["consumo"][$tiempo+1][1]=relacioncausal($variables["salario"][$tiempo][0],$variables["salario"][0]);
     
-    
-    
     $variables["ingempresas"][$tiempo+1][0]=relacionpos($variables["consumo"][$tiempo][0],$variables["ingempresas"][$tiempo+1][0]);
     
 $variables["ingempresas"][$tiempo+1][1]=relacioncausal($variables["consumo"][$tiempo][0],$variables["consumo"][0]);    
@@ -114,7 +112,7 @@ return $variables ;
 
 } 
           
-Function agregavar($variables,$tiempo) {
+Function agregavar($variables,$tiempo,$vario) {
 
 echo ' <div id="longcol"><p>';
 
@@ -122,14 +120,16 @@ foreach ($variables as $variable=>$nombre) {
 
 
    
-    if ($variables [$variable][$tiempo][0] == 2) {
+    if ($variables [$variable][$tiempo][1] === $vario) {
+        
+        if ($variables [$variable][$tiempo][0] == 2) {
          
          
          echo ' <div id="button0"><p>';
     	 echo $variables [$variable][0] . " Baja";			
     	 echo ' </p> </div> ';		
     	
-    	 
+    	 agregavar($variables,$tiempo+1,$variables [$variable][0]);
     	 
     	 
     	 echo ' </p> </div> ';
@@ -145,8 +145,11 @@ foreach ($variables as $variable=>$nombre) {
             echo $variables [$variable][0] . " Sube";
             echo ' </p> </div>';	 		
     	 
-    	 
-    	
+    	    agregavar($variables,$tiempo+1,$variables [$variable][0]);
+    	    
+    	    echo ' </p> </div> ';
+    	    
+         }
     	    
     	    
     	    }
@@ -158,51 +161,20 @@ foreach ($variables as $variable=>$nombre) {
 
 
 
-
-
-
-
-
- 
-    
- 
 for ($tiempo = 1; $tiempo <  5; ++$tiempo) {
     
-    $variables=itera($variables,$tiempo);
-    
-    echo ' <div id="longcol"><p>';
-    
-    foreach ($variables as $variable=>$nombre) {
-        
-        if ($variables [$variable][$tiempo][0] == 2) {
-         
-         
-         
-         echo ' <div id="button0"><p>';
-    	 echo $variables [$variable][0] . " Baja";			
-    	 echo ' </p> </div> ';		
-    	
-    	 	
-    	    	 
-         } 
-        
-        
-         if ($variables [$variable][$tiempo][0] == 1) {
-             
-             
-             
-            echo '  <div id="button0"><p>';
-            echo $variables [$variable][0] . " Sube";
-            echo ' </p> </div>';	 		
-    	 
-    
-    
-    
-    	    }
-        } 
-        
-}
-    
+    $variables=itera($variables,$tiempo);}
+
+
+
+agregavar($variables, 1,0);
+
+
+
+
+
+
+
 
 
 
@@ -228,7 +200,7 @@ if (array_sum ($modifico )==0) {echo "Ninguna vez";}
 if (array_sum ($modifico )==1) {echo "1 vez";}
 if (array_sum ($modifico )==2) {echo "2 veces";}
 
-
+echo $variables["salario"][2][1];
 
        ?>
       
