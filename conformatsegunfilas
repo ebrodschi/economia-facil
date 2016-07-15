@@ -25,19 +25,19 @@
     $ingempresas= array("Ingresos de las Empresas",array (0,0),array (0,),array (0,),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
     $ingpublicos= array("Ingresos Públicos",array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
     $ahorrofam= array("Ahorro Familiar",array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
-    
-   
+    $depositosbancos= array("Depósitos Bancarios",array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
+    $liquidez= array("Liquidez Dineraria",array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
    
 /* Modifico el estado de una variable para dar comienzo a la ejecución del modelo   */ 
     
-$salario[1][0]=2;
+$precio[1][0]=2;
 
     
     
    
    /* Creo la matriz general, el arrays con todas las variables  */  
     
-     $variables= array( "precio"=>$precio,"salario"=>$salario,"consumo"=>$consumo, "ingempresas"=>$ingempresas,"ingpublicos"=>$ingpublicos, "ahorrofam"=>$ahorrofam);
+     $variables= array( "precio"=>$precio,"salario"=>$salario,"consumo"=>$consumo, "ingempresas"=>$ingempresas,"ingpublicos"=>$ingpublicos, "ahorrofam"=>$ahorrofam, "depositosbancos"=>$depositosbancos, "liquidezdineraria"=>$liquidez);
     
     
     
@@ -96,6 +96,12 @@ $variables["ingempresas"][$tiempo+1]=relacionpos($variables["consumo"][$tiempo][
     
     $variables["ahorrofam"][$tiempo+1]=relacionpos($variables["salario"][$tiempo][0],$variables["ahorrofam"][$tiempo+1][0],$variables["salario"][0]);
     
+    $variables["depositosbancos"][$tiempo+1]=relacionpos($variables["ahorrofam"][$tiempo][0],$variables["depositosbancos"][$tiempo+1][0],$variables["ahorrofam"][0]);
+    
+    $variables["liquidezdineraria"][$tiempo+1]=relacionpos($variables["ahorrofam"][$tiempo][0],$variables["liquidezdineraria"][$tiempo+1][0],$variables["ahorrofam"][0]);
+    
+    
+    
     return $variables ;
 
 } 
@@ -130,13 +136,13 @@ if (array_sum ($modifico )==1) {
     }
 if (array_sum ($modifico )==2) {
     
-    echo ' <div id="longcol2"><p>';}
+    echo ' <div id="longcol2"><p>';
+    }
 
 
 
 
 foreach ($variables as $variable=>$nombre) {
-
 
    
     if ($variables [$variable][$tiempo][1] === $vario) {
@@ -150,8 +156,8 @@ foreach ($variables as $variable=>$nombre) {
     	
     	 agregavar($variables,$tiempo+1,$variables [$variable][0]);
     	 
+    	 echo ' </div> ';
     	 
-    	 echo ' </p> </div> ';
     	 
     	 
     	 
@@ -160,13 +166,15 @@ foreach ($variables as $variable=>$nombre) {
        
          if ($variables [$variable][$tiempo][0] == 1) {
              
+            
             echo '  <div id="button0"><p>';
             echo $variables [$variable][0] . " Sube";
             echo ' </p> </div>';	 		
     	 
     	    agregavar($variables,$tiempo+1,$variables [$variable][0]);
     	    
-    	    echo ' </p> </div> ';
+    	    echo ' </div> ';
+    	   
     	    
          }    	    
     	    
