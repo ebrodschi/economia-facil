@@ -32,7 +32,7 @@
      $variables= array( "precio"=>$precio,"salario"=>$salario,"consumo"=>$consumo, "ingempresas"=>$ingempresas,"ingpublicos"=>$ingpublicos, "ahorrofam"=>$ahorrofam);
     
     
-    function relacioninv ($var1,$var2) {
+    function relacioninv ($var1,$var2,$nomvar) {
             
     
           
@@ -46,11 +46,11 @@
          
          }  
          
-         return $var2;
+         return array ($var2,$nomvar);
          
             }
     
-    function relacionpos ($var1,$var2) {
+    function relacionpos ($var1,$var2,$nomvar) {
             
     
           
@@ -63,52 +63,28 @@
         
          }  
          
-         return $var2; 
+         return array ($var2,$nomvar);
          
             }
 
-function relacioncausal ($var1,$nomvar1) {
-            
-    
-          
-    if ($var1 <>  0) {return $nomvar1;
-        
-        
-           } 
-         
-          
-         
-            }
-
- 
 
     
     function itera($variables,$tiempo) {
     
-    $variables["salario"][$tiempo+1][0]=relacioninv($variables["precio"][$tiempo][0],$variables["salario"][$tiempo+1][0]);
+    $variables["salario"][$tiempo+1]=relacioninv($variables["precio"][$tiempo][0],$variables["salario"][$tiempo+1][0],$variables["precio"][0]);
+       
+    $variables["consumo"][$tiempo+1]=relacionpos($variables["salario"][$tiempo][0],$variables["consumo"][$tiempo+1][0],$variables["salario"][0]);
     
-   
-   $variables["salario"][$tiempo+1][1]=relacioncausal($variables["precio"][$tiempo][0],$variables["precio"][0]);
     
-    $variables["consumo"][$tiempo+1][0]=relacionpos($variables["salario"][$tiempo][0],$variables["consumo"][$tiempo+1][0]);
+    $variables["ingempresas"][$tiempo+1]=relacionpos($variables["consumo"][$tiempo][0],$variables["ingempresas"][$tiempo+1][0],$variables["consumo"][0]);
     
-    $variables["consumo"][$tiempo+1][1]=relacioncausal($variables["salario"][$tiempo][0],$variables["salario"][0]);
-    
-    $variables["ingempresas"][$tiempo+1][0]=relacionpos($variables["consumo"][$tiempo][0],$variables["ingempresas"][$tiempo+1][0]);
-    
-$variables["ingempresas"][$tiempo+1][1]=relacioncausal($variables["consumo"][$tiempo][0],$variables["consumo"][0]);    
+$variables["ingempresas"][$tiempo+1]=relacionpos($variables["consumo"][$tiempo][0],$variables["consumo"][0],$variables["consumo"][0]);    
 
-    $variables["ingpublicos"][$tiempo+1][0]=relacionpos($variables["consumo"][$tiempo][0],$variables["ingpublicos"][$tiempo+1][0]);
+    $variables["ingpublicos"][$tiempo+1]=relacionpos($variables["consumo"][$tiempo][0],$variables["ingpublicos"][$tiempo+1][0],$variables["consumo"][0]);
     
-    $variables["ingpublicos"][$tiempo+1][1]=relacioncausal($variables["consumo"][$tiempo][0],$variables["consumo"][0]);
-   
+    $variables["ahorrofam"][$tiempo+1]=relacionpos($variables["salario"][$tiempo][0],$variables["ahorrofam"][$tiempo+1][0],$variables["salario"][0]);
     
-    $variables["ahorrofam"][$tiempo+1][0]=relacionpos($variables["salario"][$tiempo][0],$variables["ahorrofam"][$tiempo+1][0]);
-    
-    $variables["ahorrofam"][$tiempo+1][1]=relacioncausal($variables["salario"][$tiempo][0],$variables["salario"][0]);
-
-    
-return $variables ;
+    return $variables ;
 
 } 
           
@@ -149,15 +125,13 @@ foreach ($variables as $variable=>$nombre) {
     	    
     	    echo ' </p> </div> ';
     	    
-         }
+         }    	    
     	    
-    	    
-    	    }
-    	    
-}	
+    	    }    	    
+                }	
  
 
-         }
+                    }
 
 
 
@@ -168,18 +142,6 @@ for ($tiempo = 1; $tiempo <  5; ++$tiempo) {
 
 
 agregavar($variables, 1,0);
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
