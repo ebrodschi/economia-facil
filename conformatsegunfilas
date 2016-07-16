@@ -16,32 +16,7 @@
   
  <?php   
     
-/*  Defino las variables del modelo económico, el primer argumento es el nombre, los siguientes representan distintos tiempos y dentro de cada tiempo hay un array que contiene el estado de la variable y el nombre de la variable que causó su variación de estado */    
-   
-    
-    $precio= array("Precio",array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
-    $salario= array("Salario",array (0,0),array (0,0),array (0,),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
-    $consumo= array("Consumo",array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0));
-    $ingempresas= array("Ingresos de las Empresas",array (0,0),array (0,),array (0,),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
-    $ingpublicos= array("Ingresos Públicos",array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
-    $ahorrofam= array("Ahorro Familiar",array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
-    $depositosbancos= array("Depósitos Bancarios",array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
-    $liquidez= array("Liquidez Dineraria",array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
-   
-/* Modifico el estado de una variable para dar comienzo a la ejecución del modelo   */ 
-    
-$precio[1][0]=2;
-
-    
-    
-   
-   /* Creo la matriz general, el arrays con todas las variables  */  
-    
-     $variables= array( "precio"=>$precio,"salario"=>$salario,"consumo"=>$consumo, "ingempresas"=>$ingempresas,"ingpublicos"=>$ingpublicos, "ahorrofam"=>$ahorrofam, "depositosbancos"=>$depositosbancos, "liquidezdineraria"=>$liquidez);
-    
-    
-    
-    /* Defino las relaciones generales positivas e inversas */ 
+/* Defino las relaciones generales positivas e inversas */ 
     
     
     function relacioninv ($var1,$var2,$nomvar) {
@@ -79,6 +54,74 @@ $precio[1][0]=2;
          
             }
 
+   
+ /* Funcion para crear variable nueva   */   
+   
+  function creavar ($nomvar) { 
+      
+      $var=array();
+      array_push ($var, $nomvar);
+      
+      for ($tiempo = 1; $tiempo <  10; ++$tiempo) { 
+          
+          
+          $var[]=array (0,0) ;
+          
+            
+            }
+            
+            return $var;
+            }
+   
+   
+   /* Funcion para mandar una variable nueva a la matriz global de variables   */  
+   
+   function ingmodelo ($variable,$variables) { 
+   
+   
+   $variables[$variable[0]] = $variable;
+   
+   return $variables;
+   }
+      
+
+/*  Defino las variables del modelo económico, el primer argumento es el nombre, los siguientes representan distintos tiempos y dentro de cada tiempo hay un array que contiene el estado de la variable y el nombre de la variable que causó su variación de estado */    
+   
+    
+    $precio= array("Precio",array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
+    $salario= array("Salario",array (0,0),array (0,0),array (0,),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
+    $consumo= array("Consumo",array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0));
+    $ingempresas= array("Ingresos de las Empresas",array (0,0),array (0,),array (0,),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
+    $ingpublicos= array("Ingresos Públicos",array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
+    $ahorrofam= array("Ahorro Familiar",array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
+    $depositosbancos= array("Depósitos Bancarios",array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
+    $liquidez= array("Liquidez Dineraria",array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
+   
+/* Aca  abajo crear nueva variables con funcion   */ 
+
+$mejoratech= creavar ("Mejora Tecnológica");
+
+ 
+/* Modifico el estado de una variable para dar comienzo a la ejecución del modelo   */ 
+    
+
+
+    $precio[1][0]=2;
+    
+   
+   /* Creo la matriz general, el arrays con todas las variables  */  
+    
+     $variables= array( "precio"=>$precio,"salario"=>$salario,"consumo"=>$consumo, "ingempresas"=>$ingempresas,"ingpublicos"=>$ingpublicos, "ahorrofam"=>$ahorrofam, "depositosbancos"=>$depositosbancos, "liquidez dineraria"=>$liquidez);
+    
+    
+/* Aca abajo ingreso nuevas variables al modelo  */ 
+    
+    
+    $variables= ingmodelo ($mejoratech,$variables);
+    
+    
+    
+    
 /* Acá doy forma al modelo, esta funcion contiene todas las relaciones entre las distintas variables */ 
     
     function itera($variables,$tiempo) {
@@ -98,9 +141,9 @@ $variables["ingempresas"][$tiempo+1]=relacionpos($variables["consumo"][$tiempo][
     
     $variables["depositosbancos"][$tiempo+1]=relacionpos($variables["ahorrofam"][$tiempo][0],$variables["depositosbancos"][$tiempo+1][0],$variables["ahorrofam"][0]);
     
-    $variables["liquidezdineraria"][$tiempo+1]=relacionpos($variables["ahorrofam"][$tiempo][0],$variables["liquidezdineraria"][$tiempo+1][0],$variables["ahorrofam"][0]);
+    $variables["liquidez dineraria"][$tiempo+1]=relacionpos($variables["ahorrofam"][$tiempo][0],$variables["liquidez dineraria"][$tiempo+1][0],$variables["ahorrofam"][0]);
     
-    
+    $variables["Mejora Tecnológica"][$tiempo+1]=relacionpos($variables["liquidez dineraria"][$tiempo][0],$variables["Mejora Tecnológica"][$tiempo+1][0],$variables["liquidez dineraria"][0]);
     
     return $variables ;
 
