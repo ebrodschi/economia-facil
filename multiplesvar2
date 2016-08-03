@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link type='text/css' rel='stylesheet' href='style.css'/>
+    <title>PHP!</title>
+  </head>
+  <body>
+
+<!– dejo espacio para que el primer boton aparezca mas centrado en verticalmente en la pantalla–>
+
+<br> <br><br>
+<br> <br><br>
+<br> <br><br>
+<br>
+<br>
+  
+ <?php   
+    
+/* Defino las relaciones generales positivas e inversas */ 
+    
+    
+    function relacioninv ($var1,$var2,$nomvar) {
+            
+    
+          
+    if ($var1[0][0] == 2) {
+        
+        if ($var2[0][0] == 0)
+          
+            {   $nomvar1=$nomvar;
+                $nomvar2=$var2[1][1];
+                $nomvar3=$var2[2][1];
+                
+                $var2 [0][0] = 1;    } 
+                
+        elseif ($var2[0][0] <> 0)
+        
+            { if ($var2 [1][0] == 0)
+                
+                {    
+                    $nomvar2=$nomvar;
+                    $nomvar1=$var2[0][1];
+                    $nomvar3=$var2[2][1];
+                                        
+                    $var2 [1][0] = 1; } 
+        
+        elseif ($var2[1][0] <> 0)    
+        
+                {   $nomvar3=$nomvar;
+                    $nomvar1=$var2[0][1];
+                    $nomvar2=$var2[1][1];
+                    
+                    $var2[2][0]=1;}
+        
+                    } 
+                                
+        return array (array($var2[0][0],$nomvar1),array ($var2[1][0],$nomvar2),array ($var2[2][0],$nomvar3));
+                                } 
+        
+    
+    if ($var1[0][0] == 1) {
+        
+        if ($var2[0][0] == 0)
+          
+            {  $nomvar1=$nomvar;
+                $var2 [0][0] = 2;    } 
+                
+        elseif ($var2[0][0] <> 0)
+        
+            { if ($var2 [1][0] = 0)
+                
+                {   $nomvar2=$nomvar; 
+                    $var2 [1][0] = 2; } 
+        
+        elseif ($var2[1][0] <> 0)    
+        
+                {$nomvar3=$nomvar; 
+                    $var2[2][0]=2;}
+        
+        
+        
+                                } 
+        return array (array($var2[0][0],$nomvar1),array ($var2[1][0],$nomvar2),array ($var2[2][0],$nomvar3));
+                                
+                                } 
+          
+    
+         
+            }
+    
+    function relacionpos ($var1,$var2,$nomvar) {
+            
+    
+          
+    if ($var1 == 2) {$var2 = 2;
+        
+        
+           } 
+         elseif ($var1 == 1) { $var2 = 1;  
+         
+        
+         }  
+         
+         return array ($var2,$nomvar);
+         
+            }
+
+   
+ /* Funcion para crear variable nueva   */   
+   
+  function creavar ($nomvar) { 
+      
+      $var=array();
+      array_push ($var, $nomvar);
+      
+      for ($tiempo = 1; $tiempo <  4; ++$tiempo) { 
+          
+          
+          $var[]=array (array (0,0),array (0,0),array (0,0)) ;
+          
+            
+            }
+            
+            return $var;
+            }
+   
+   
+   /* Funcion para mandar una variable nueva a la matriz global de variables   */  
+   
+   function ingmodelo ($variable,$variables) { 
+   
+   
+   $variables[$variable[0]] = $variable;
+   
+   return $variables;
+   }
+      
+
+/*  Defino las variables del modelo económico, el primer argumento es el nombre, los siguientes representan distintos tiempos y dentro de cada tiempo hay un array que contiene el estado de la variable y el nombre de la variable que causó su variación de estado */    
+   
+    
+    $liquidez= array("Liquidez Dineraria",array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
+   
+/* Aca  abajo crear nueva variable con funcion   */ 
+
+$mejoratech= creavar ("Mejora Tecnológica");
+$invprivada= creavar ("Inversión Bruta Privada");
+$pbi= creavar ("Producto Bruto Interno"); 
+$invneta= creavar ("Inversión Neta General"); 
+$gastopub= creavar ("Gasto Público");
+$saldofiscal= creavar ("Saldo Fiscal Público");
+$consumo= creavar ("Consumo");
+$ingempresas= creavar ("Ingreso de las Empresas");
+
+/* Modifico el estado de una variable para dar comienzo a la ejecución del modelo   */ 
+    
+
+
+    
+    $gastopub[1][0][0]=2;
+    $consumo[1][0][0]=2;
+    $invprivada[1][0][0]=2;
+   
+   /* Creo la matriz general, el arrays con todas las variables  */  
+    
+     $variables= array( "precio"=>$precio);
+    
+    
+/* Aca abajo ingreso nuevas variables al modelo  */ 
+    
+    
+   
+    $variables= ingmodelo ($invneta,$variables);
+    $variables= ingmodelo ($pbi,$variables);
+    $variables= ingmodelo ($gastopub,$variables);
+    $variables= ingmodelo ($saldofiscal,$variables);
+    $variables= ingmodelo ($consumo,$variables);
+    $variables= ingmodelo ($ingempresas,$variables);
+    $variables= ingmodelo ($invprivada,$variables);
+    
+/* Acá doy forma al modelo, esta funcion contiene todas las relaciones entre las distintas variables */ 
+    
+    function itera($variables,$tiempo) {
+    
+   
+    
+    
+     
+     $variables["Inversión Neta General"][$tiempo+1]=relacioninv($variables["Inversión Bruta Privada"][$tiempo],$variables["Inversión Neta General"][$tiempo+1],$variables["Inversión Bruta Privada"][0]);
+     
+     $variables["Producto Bruto Interno"][$tiempo+1]=relacioninv($variables["Inversión Bruta Privada"][$tiempo],$variables["Producto Bruto Interno"][$tiempo+1],$variables["Inversión Bruta Privada"][0]); 
+    
+     $variables["Producto Bruto Interno"][$tiempo+1]=relacioninv($variables["Gasto Público"][$tiempo],$variables["Producto Bruto Interno"][$tiempo+1],$variables["Gasto Público"][0]); 
+   
+    $variables["Saldo Fiscal Público"][$tiempo+1]=relacioninv($variables["Gasto Público"][$tiempo],$variables["Saldo Fiscal Público"][$tiempo+1],$variables["Gasto Público"][0]);
+    
+    $variables["Producto Bruto Interno"][$tiempo+1]=relacioninv($variables["Consumo"][$tiempo],$variables["Producto Bruto Interno"][$tiempo+1],$variables["Consumo"][0]);
+    
+    return $variables ;
+
+} 
+          
+
+/* Esta funcion es la que ejecuta la parte visual, va agregando los botones ordenamente */ 
+
+Function agregavar($variables,$tiempo,$vario) {
+
+
+/* Lo que sigue sirve para ordenar verticalmente, si una variable modifica a dos variables, tira la div siguiente más para arriba con longcol2 en vez de longcol1 */ 
+
+
+
+
+foreach ($variables as $variable=>$nombre) {
+
+   for ($posibilidad = 0; $posibilidad <  2; ++$posibilidad) {
+    
+    if ($variables [$variable][$tiempo][$posibilidad][1] === $vario) {
+        
+        if ($variables [$variable][$tiempo][$posibilidad][0] == 2) {
+         
+         
+         echo ' <div id="button0"><p>';
+    	 echo $variables [$variable][0] . " Baja";			
+    	 echo ' </p> </div> ';	 } 
+    	 
+    	if ($variables [$variable][$tiempo][$posibilidad][0] == 1) {
+             
+            
+            echo '  <div id="button0"><p>';
+            echo $variables [$variable][0] . " Sube";
+            echo ' </p> </div>';	 }   
+    	 
+    	    agregavar($variables,$tiempo+1,$variables [$variable][0]);
+    		
+    	    echo ' </div> ';
+    	  
+     	    
+    	}   }   }   
+
+                    }
+
+/* Corro el modelo. Itero primero en todos los tiempos disponibles y luego mando el agregavar para mostrar los resultados*/
+
+
+for ($tiempo = 1; $tiempo <  5; ++$tiempo) {
+    
+    $variables=itera($variables,$tiempo);}
+
+
+
+agregavar($variables, 1,0);
+
+
+echo $variables["Producto Bruto Interno"][1][0][0];
+echo $variables["Producto Bruto Interno"][1][1][0];
+echo $variables["Producto Bruto Interno"][2][0][0];
+echo $variables["Producto Bruto Interno"][2][1][0];
+echo $variables["Producto Bruto Interno"][2][2][0];
+
+echo $variables["Producto Bruto Interno"][2][0][1];
+echo $variables["Producto Bruto Interno"][2][1][1];
+echo $variables["Producto Bruto Interno"][2][2][1];
+
+
+
+if ($variables ["Producto Bruto Interno"][2][1][0] <> 0) {
+    
+    echo "funca";}
+
+$carlos="francisco";
+$daniel="tano";
+$carlos=$daniel;
+echo $carlos;
+
+print_r ($variables);
+
+
+       ?>
+      
+    </p>
+  </body>
+</html> 
