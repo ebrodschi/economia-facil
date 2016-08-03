@@ -27,36 +27,52 @@
         
         for ($posibvar2 = 0; $posibvar2 <  3; ++$posibvar2) {
         
-        if ($var2[$posib2][0] == 0)  
+        if ($var2[$posibvar2][0] == 0)  
         
           
             {   $var2 [$posibvar2][1] = $nomvar; 
                 $var2 [$posibvar2][0] = 1;    
-                break;
-                
-                } 
-              
-             
-                                }  } } return $var2; } 
-    
-          
+                break;  } 
+                            } return $var2; } 
+                                
+     if ($var1[$posibvar1][0] == 1) {
+        
+        for ($posibvar2 = 0; $posibvar2 <  3; ++$posibvar2) {
+        
+        if ($var2[$posibvar2][0] == 0)  
+
+            {   $var2 [$posibvar2][1] = $nomvar; 
+                $var2 [$posibvar2][0] = 2;    
+                break; } 
+                            } return $var2; } }                                                                }  
+                            
    
     function relacionpos ($var1,$var2,$nomvar) {
             
+    for ($posibvar1 = 0; $posibvar1 <  3; ++$posibvar1) {
     
+    if ($var1[$posibvar1][0] == 2) {
+        
+        for ($posibvar2 = 0; $posibvar2 <  3; ++$posibvar2) {
+        
+        if ($var2[$posibvar2][0] == 0)  
+        
           
-    if ($var1 == 2) {$var2 = 2;
+            {   $var2 [$posibvar2][1] = $nomvar; 
+                $var2 [$posibvar2][0] = 2;    
+                break;  } 
+                            } return $var2; } 
+                                
+     if ($var1[$posibvar1][0] == 1) {
         
+        for ($posibvar2 = 0; $posibvar2 <  3; ++$posibvar2) {
         
-           } 
-         elseif ($var1 == 1) { $var2 = 1;  
-         
-        
-         }  
-         
-         return array ($var2,$nomvar);
-         
-            }
+        if ($var2[$posibvar2][0] == 0)  
+
+            {   $var2 [$posibvar2][1] = $nomvar; 
+                $var2 [$posibvar2][0] = 1;    
+                break; } 
+                            } return $var2; } }                                                                } 
 
    
  /* Funcion para crear variable nueva   */   
@@ -66,10 +82,10 @@
       $var=array();
       array_push ($var, $nomvar);
       
-      for ($tiempo = 1; $tiempo <  4; ++$tiempo) { 
+      for ($tiempo = 1; $tiempo <  20; ++$tiempo) { 
           
           
-          $var[]=array (array (0,0),array (0,0),array (0,0)) ;
+          $var[]=array (array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0)) ;
           
             
             }
@@ -139,15 +155,15 @@ $ingempresas= creavar ("Ingreso de las Empresas");
     
     
      
-     $variables["Inversión Neta General"][$tiempo+1]=relacioninv($variables["Inversión Bruta Privada"][$tiempo],$variables["Inversión Neta General"][$tiempo+1],$variables["Inversión Bruta Privada"][0]);
+     $variables["Inversión Neta General"][$tiempo+1]=relacionpos($variables["Inversión Bruta Privada"][$tiempo],$variables["Inversión Neta General"][$tiempo+1],$variables["Inversión Bruta Privada"][0]);
      
-     $variables["Producto Bruto Interno"][$tiempo+1]=relacioninv($variables["Inversión Bruta Privada"][$tiempo],$variables["Producto Bruto Interno"][$tiempo+1],$variables["Inversión Bruta Privada"][0]); 
+     $variables["Producto Bruto Interno"][$tiempo+1]=relacionpos($variables["Inversión Bruta Privada"][$tiempo],$variables["Producto Bruto Interno"][$tiempo+1],$variables["Inversión Bruta Privada"][0]); 
     
-     $variables["Producto Bruto Interno"][$tiempo+1]=relacioninv($variables["Gasto Público"][$tiempo],$variables["Producto Bruto Interno"][$tiempo+1],$variables["Gasto Público"][0]); 
+     $variables["Producto Bruto Interno"][$tiempo+1]=relacionpos($variables["Gasto Público"][$tiempo],$variables["Producto Bruto Interno"][$tiempo+1],$variables["Gasto Público"][0]); 
    
     $variables["Saldo Fiscal Público"][$tiempo+1]=relacioninv($variables["Gasto Público"][$tiempo],$variables["Saldo Fiscal Público"][$tiempo+1],$variables["Gasto Público"][0]);
     
-    $variables["Producto Bruto Interno"][$tiempo+1]=relacioninv($variables["Consumo"][$tiempo],$variables["Producto Bruto Interno"][$tiempo+1],$variables["Consumo"][0]);
+    $variables["Producto Bruto Interno"][$tiempo+1]=relacionpos($variables["Consumo"][$tiempo],$variables["Producto Bruto Interno"][$tiempo+1],$variables["Consumo"][0]);
     
     return $variables ;
 
@@ -210,23 +226,12 @@ echo $variables["Producto Bruto Interno"][1][1][0];
 echo $variables["Producto Bruto Interno"][2][0][0];
 echo $variables["Producto Bruto Interno"][2][1][0];
 echo $variables["Producto Bruto Interno"][2][2][0];
+echo $variables["Saldo Fiscal Público"][2][0][0];
+
 
 echo $variables["Producto Bruto Interno"][2][0][1];
 echo $variables["Producto Bruto Interno"][2][1][1];
 echo $variables["Producto Bruto Interno"][2][2][1];
-
-
-
-if ($variables ["Producto Bruto Interno"][2][1][0] <> 0) {
-    
-    echo "funca";}
-
-$carlos="francisco";
-$daniel="tano";
-$carlos=$daniel;
-echo $carlos;
-
-print_r ($variables);
 
 
        ?>
