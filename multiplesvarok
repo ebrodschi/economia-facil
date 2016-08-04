@@ -256,7 +256,7 @@ foreach ($variables as $variable=>$nombre) {
     	 echo $variables [$variable][0] . " Baja";			
     	 echo ' </p> </div> ';	
     	 agregavar($variables,$tiempo+1,$variables [$variable][0]);
-    	 echo ' </div> ';
+    	 
     	 
     	 } 
     	 
@@ -268,18 +268,18 @@ foreach ($variables as $variable=>$nombre) {
             echo ' </p> </div>'; 
             agregavar($variables,$tiempo+1,$variables [$variable][0]);
             
-            echo ' </div> ';
+            
             
             }   
     	 
     	    
-    		
+    	
     	    
     	  
      	    
-    	}   }   }   
+    	}  	 }   }    echo ' </div> ';
 
-                    }
+                    } 
 
 /* Corro el modelo. Itero primero en todos los tiempos disponibles y luego mando el agregavar para mostrar los resultados*/
 
