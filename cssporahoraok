@@ -5,6 +5,13 @@
     border-radius: 10px;
 }
 
+body {
+ /*color: white;*/
+ 
+}
+
+
+
 img {
     width: 200px;
     float: right;
@@ -19,6 +26,7 @@ h1 {
 
 p {
     font-family: Tahoma, sans-serif;
+    color: white;
 }
 
 li {
@@ -86,6 +94,5 @@ pvar {
     
 
         }
-
 
 
