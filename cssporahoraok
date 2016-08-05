@@ -38,51 +38,46 @@ input {
     border-radius: 5px;
     position: relative;
 	background-color: #cc0323;
-	font-size: 1 em;
 	color: white;
 	font-family: Tahoma, sans-serif;
-	width: 75px;
-	display:block;
-	vertical-align: top;
-	padding:0 0 0 0;
+	width: 8em;
+	margin-top: 2em;
+	margin-bottom: 2em;
 	}
 
 
 #button0 p{
     position: relative;
-	font-size: 1 em;
+	font-size: 1em;
 	color: white;
 	text-align: center;
-	padding:0 0 0 0 ;
-    vertical-align: top;
+	
+    
+    
 }
 
 
 #longcol {
     
     position: relative;
-    left: 100px;
-    bottom: 150px;
+    left: 9em;
+    bottom: 160px;
     border: 2px solid green; /**/
-    margin-top: 2px;
-	margin-bottom: 2px;
-    padding:0;
-    
     vertical-align: top;
     
+    margin-bottom: -5em;
         }
         
 #longcol2 {
     
     position: relative;
-    left: 100px;
-    bottom: 190px;
+    left: 9em;
+    bottom: 250px;
     border: 2px solid red;/* */
-    margin-top: 2px;
-	margin-bottom: 2px;
-	padding:0;
-	
-	vertical-align: top;
+    vertical-align: top;
+	margin-bottom: -10em;
+    
+
         }
 
 
