@@ -31,6 +31,13 @@ input {
 }
 
 
+pvar {
+    font-family: Tahoma, sans-serif;
+    color: green;
+    position: relative;
+	font-size: 1em;
+	text-align: center;
+}
 
 
 #button0{
@@ -61,7 +68,7 @@ input {
     
     position: relative;
     left: 9em;
-    bottom: 160px;
+    bottom: 180px;
     border: 2px solid green; /**/
     vertical-align: top;
     
