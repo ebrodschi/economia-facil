@@ -126,11 +126,7 @@ $ingempresas= creavar ("Ingreso de las Empresas");
 $endeudpubnac= creavar ("Endeudamiento Público Nacional");
 $endudpubext= creavar ("Endeudamiento Público Exterior");
 $basemon= creavar ("Base Monetaria (dinero en circulación)");
-$nuevavar= creavar ("");
-$nuevavar= creavar ("");
-$nuevavar= creavar ("");
-$nuevavar= creavar ("");
-$nuevavar= creavar ("");
+
 
 
 /* Modifico el estado de una variable para dar comienzo a la ejecución del modelo   */ 
@@ -161,12 +157,7 @@ $nuevavar= creavar ("");
     $variables= ingmodelo ($endeudpubnac,$variables);
     $variables= ingmodelo ($endudpubext,$variables);
     $variables= ingmodelo ($basemon,$variables);
-    $variables= ingmodelo ($n,$variables);
-    $variables= ingmodelo ($n,$variables);
-    $variables= ingmodelo ($n,$variables);
-    $variables= ingmodelo ($n,$variables);
-    $variables= ingmodelo ($n,$variables);
-    $variables= ingmodelo ($n,$variables);
+    
     
 /* Acá doy forma al modelo, esta funcion contiene todas las relaciones entre las distintas variables */ 
     
@@ -253,7 +244,9 @@ foreach ($variables as $variable=>$nombre) {
          
          
          echo ' <div id="button0"><p>';
-    	 echo $variables [$variable][0] . " Baja";			
+    	 echo $variables [$variable][0];
+    	 echo "<br>";
+    	 echo "<font color='yellow'> Baja" ;	
     	 echo ' </p> </div> ';	
     	 agregavar($variables,$tiempo+1,$variables [$variable][0]);
     	 
@@ -264,8 +257,10 @@ foreach ($variables as $variable=>$nombre) {
              
             
             echo '  <div id="button0"><p>';
-            echo $variables [$variable][0] . " Sube";
-            echo ' </p> </div>'; 
+            echo $variables [$variable][0] ;
+            echo "<br>";
+    	    echo "<font color='yellow'> Sube" ;
+            echo  ' </div>';
             agregavar($variables,$tiempo+1,$variables [$variable][0]);
             
             
