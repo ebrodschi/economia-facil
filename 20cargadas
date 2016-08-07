@@ -151,16 +151,27 @@ $precios= creavar ("Nivel de Precios (Inflación)");
 $pbipotencial= creavar ("PBI Potencial de la Economía");
 $salreal= creavar ("Salario Real");
 $tcr= creavar ("Tipo de Cambio Real (Precio relativo de bienes extranjeros frente a locales)");
+$transfhog= creavar ("Transferencias a los hogares");
+$reservas= creavar ("Reservas Internacionales del Banco Central");
+$salnom= creavar ("Salario Nominal");
+$costoprod= creavar ("Costos de Producción");
+$ofertatrabajo= creavar ("Oferta de Trabajo (Fuerza Laboral)");
+$desigualdad= creavar ("Desigualdad");
+$depreciacion= creavar ("Depreciacion del capital fijo");
+$skf= creavar ("Stock de Capital Fijo (Capacidad Productiva Instalada)");
+$invpublica= creavar ("Inversión Pública");
+$demandatrabajo= creavar ("Demanda de Trabajo");
+$tasainteres= creavar ("Tasa de Interés (Precio del Dinero/ Activos Financieros)");
+$credinv= creavar ("Créditos a la Inversión");
+$credconsumo= creavar ("Créditos al Consumo");
+$rendactfin= creavar ("Rendimiento Activos Financieros");
+$ingcapfin= creavar ("Ingreso de Capitales Financieros");
+$demactfin= creavar ("Demanda de Activos Financieros");
+$depbancarios= creavar ("Depositos Bancarios");
 $a= creavar ("");
 $a= creavar ("");
 $a= creavar ("");
 $a= creavar ("");
-$a= creavar ("");
-$a= creavar ("");
-$a= creavar ("");
-$a= creavar ("");
-$a= creavar ("");
-
 
 /* Modifico el estado de una variable para dar comienzo a la ejecución del modelo   */ 
     
@@ -208,7 +219,23 @@ $a= creavar ("");
     $variables= ingmodelo ($pbipotencial,$variables);
     $variables= ingmodelo ($salreal,$variables);
     $variables= ingmodelo ($tcr,$variables);
-    $variables= ingmodelo ($a,$variables);
+    $variables= ingmodelo ($transfhog,$variables);
+    $variables= ingmodelo ($reservas,$variables);
+    $variables= ingmodelo ($salnom,$variables);
+    $variables= ingmodelo ($costoprod,$variables);
+    $variables= ingmodelo ($ofertatrabajo,$variables);
+    $variables= ingmodelo ($desigualdad,$variables);
+    $variables= ingmodelo ($depreciacion,$variables);
+    $variables= ingmodelo ($skf,$variables);
+    $variables= ingmodelo ($invpublica,$variables);
+    $variables= ingmodelo ($demandatrabajo,$variables);
+    $variables= ingmodelo ($tasainteres,$variables);
+    $variables= ingmodelo ($credinv,$variables);
+    $variables= ingmodelo ($credconsumo,$variables);
+    $variables= ingmodelo ($rendactfin,$variables);
+    $variables= ingmodelo ($ingcapfin,$variables);
+    $variables= ingmodelo ($demactfin,$variables);
+    $variables= ingmodelo ($depbancarios,$variables);
     $variables= ingmodelo ($a,$variables);
     $variables= ingmodelo ($a,$variables);
     $variables= ingmodelo ($a,$variables);
@@ -224,8 +251,7 @@ $a= creavar ("");
      
      $variables["Inversión Neta General"][$tiempo+1]=relacionpos($variables["Inversión Bruta Privada"][$tiempo],$variables["Inversión Neta General"][$tiempo+1],$variables["Inversión Bruta Privada"][0]);
      
-     $variables["Inversión Neta General"][$tiempo+1]=relacionpos($variables["Producto Bruto Interno"][$tiempo],$variables["Inversión Neta General"][$tiempo+1],$variables["Producto Bruto Interno"][0]);
-     
+    
      $variables["Producto Bruto Interno"][$tiempo+1]=relacionpos($variables["Inversión Bruta Privada"][$tiempo],$variables["Producto Bruto Interno"][$tiempo+1],$variables["Inversión Bruta Privada"][0]); 
     
      $variables["Producto Bruto Interno"][$tiempo+1]=relacionpos($variables["Gasto Público"][$tiempo],$variables["Producto Bruto Interno"][$tiempo+1],$variables["Gasto Público"][0]); 
@@ -292,14 +318,60 @@ $variables["Tipo de Cambio Real (Precio relativo de bienes extranjeros frente a 
  
  $variables["Impuestos"][$tiempo+1]=relacionpos($variables["Nivel de Precios (Inflación)"][$tiempo],$variables["Impuestos"][$tiempo+1],$variables["Nivel de Precios (Inflación)"][0]);  
  
+ $variables["Ingresos de los Hogares"][$tiempo+1]=relacionpos($variables["Transferencias a los hogares"][$tiempo],$variables["Ingresos de los Hogares"][$tiempo+1],$variables["Transferencias a los hogares"][0]); 
  
+ $variables["Gasto Público"][$tiempo+1]=relacionpos($variables["Transferencias a los hogares"][$tiempo],$variables["Gasto Público"][$tiempo+1],$variables["Transferencias a los hogares"][0]); 
  
+$variables["Reservas Internacionales del Banco Central"][$tiempo+1]=relacionpos($variables["Saldo de la Balanza de Pagos"][$tiempo],$variables["Reservas Internacionales del Banco Central"][$tiempo+1],$variables["Saldo de la Balanza de Pagos"][0]); 
  
+$variables["Salario Real"][$tiempo+1]=relacionpos($variables["Salario Nominal"][$tiempo],$variables["Salario Real"][$tiempo+1],$variables["Salario Nominal"][0]); 
+
+$variables["Costos de Producción"][$tiempo+1]=relacionpos($variables["Salario Nominal"][$tiempo],$variables["Costos de Producción"][$tiempo+1],$variables["Salario Nominal"][0]); 
+
+$variables["Ingresos de los Hogares"][$tiempo+1]=relacionpos($variables["Salario Real"][$tiempo],$variables["Ingresos de los Hogares"][$tiempo+1],$variables["Salario Real"][0]); 
+
+$variables["Oferta de Trabajo (Fuerza Laboral)"][$tiempo+1]=relacionpos($variables["Salario Real"][$tiempo],$variables["Oferta de Trabajo (Fuerza Laboral)"][$tiempo+1],$variables["Salario Real"][0]); 
+
+$variables["Desigualdad"][$tiempo+1]=relacionpos($variables["Salario Real"][$tiempo],$variables["Desigualdad"][$tiempo+1],$variables["Salario Real"][0]); 
+
+ $variables["Inversión Neta General"][$tiempo+1]=relacioninv($variables["Depreciacion del capital fijo"][$tiempo],$variables["Inversión Neta General"][$tiempo+1],$variables["Depreciacion del capital fijo"][0]); 
  
+$variables["Stock de Capital Fijo (Capacidad Productiva Instalada)"][$tiempo+1]=relacionpos($variables["Inversión Neta General"][$tiempo],$variables["Stock de Capital Fijo (Capacidad Productiva Instalada)"][$tiempo+1],$variables["Inversión Neta General"][0]);  
  
+$variables["PBI Potencial de la Economía"][$tiempo+1]=relacionpos($variables["Stock de Capital Fijo (Capacidad Productiva Instalada)"][$tiempo],$variables["PBI Potencial de la Economía"][$tiempo+1],$variables["Stock de Capital Fijo (Capacidad Productiva Instalada)"][0]); 
  
+$variables["Inversión Neta General"][$tiempo+1]=relacionpos($variables["Inversión Pública"][$tiempo],$variables["Inversión Neta General"][$tiempo+1],$variables["Inversión Pública"][0]);  
+
+$variables["Gasto Público"][$tiempo+1]=relacionpos($variables["Inversión Pública"][$tiempo],$variables["Gasto Público"][$tiempo+1],$variables["Inversión Pública"][0]);   
  
+$variables["Demanda de Trabajo"][$tiempo+1]=relacionpos($variables["Producto Bruto Interno"][$tiempo],$variables["Demanda de Trabajo"][$tiempo+1],$variables["Producto Bruto Interno"][0]);   
+
+$variables["Créditos a la Inversión"][$tiempo+1]=relacioninv($variables["Tasa de Interés (Precio del Dinero/ Activos Financieros)"][$tiempo],$variables["Créditos a la Inversión"][$tiempo+1],$variables["Tasa de Interés (Precio del Dinero/ Activos Financieros)"][0]);    
  
+$variables["Créditos al Consumo"][$tiempo+1]=relacioninv($variables["Tasa de Interés (Precio del Dinero/ Activos Financieros)"][$tiempo],$variables["Créditos al Consumo"][$tiempo+1],$variables["Tasa de Interés (Precio del Dinero/ Activos Financieros)"][0]);   
+ 
+$variables["Rendimiento Activos Financieros"][$tiempo+1]=relacionpos($variables["Tasa de Interés (Precio del Dinero/ Activos Financieros)"][$tiempo],$variables["Rendimiento Activos Financieros"][$tiempo+1],$variables["Tasa de Interés (Precio del Dinero/ Activos Financieros)"][0]);   
+ 
+$variables["Consumo"][$tiempo+1]=relacionpos($variables["Créditos al Consumo"][$tiempo],$variables["Consumo"][$tiempo+1],$variables["Créditos al Consumo"][0]);   
+ 
+$variables["Inversión Bruta Privada"][$tiempo+1]=relacionpos($variables["Créditos a la Inversión"][$tiempo],$variables["Inversión Bruta Privada"][$tiempo+1],$variables["Créditos a la Inversión"][0]);    
+ 
+$variables["Inversión Bruta Privada"][$tiempo+1]=relacionpos($variables["Rendimiento Activos Financieros"][$tiempo],$variables["Inversión Bruta Privada"][$tiempo+1],$variables["Rendimiento Activos Financieros"][0]);     
+ 
+$variables["Demanda de Activos Financieros"][$tiempo+1]=relacionpos($variables["Rendimiento Activos Financieros"][$tiempo],$variables["Demanda de Activos Financieros"][$tiempo+1],$variables["Rendimiento Activos Financieros"][0]);  
+
+$variables["Ingreso de Capitales Financieros"][$tiempo+1]=relacionpos($variables["Rendimiento Activos Financieros"][$tiempo],$variables["Ingreso de Capitales Financieros"][$tiempo+1],$variables["Rendimiento Activos Financieros"][0]);  
+ 
+$variables["Activos Financieros de los Hogares"][$tiempo+1]=relacionpos($variables["Ahorro de los Hogares"][$tiempo],$variables["Activos Financieros de los Hogares"][$tiempo+1],$variables["Ahorro de los Hogares"][0]);  
+ 
+$variables["Depositos Bancarios"][$tiempo+1]=relacionpos($variables["Ahorro de los Hogares"][$tiempo],$variables["Depositos Bancarios"][$tiempo+1],$variables["Ahorro de los Hogares"][0]);   
+ 
+$variables["Créditos a la Inversión"][$tiempo+1]=relacionpos($variables["Depositos Bancarios"][$tiempo],$variables["Créditos a la Inversión"][$tiempo+1],$variables["Depositos Bancarios"][0]);   
+
+$variables["Créditos al Consumo"][$tiempo+1]=relacionpos($variables["Depositos Bancarios"][$tiempo],$variables["Créditos al Consumo"][$tiempo+1],$variables["Depositos Bancarios"][0]);   
+
+$variables["Demanda de Activos Financieros"][$tiempo+1]=relacionpos($variables["Base Monetaria (dinero en circulación)"][$tiempo],$variables["Demanda de Activos Financieros"][$tiempo+1],$variables["Base Monetaria (dinero en circulación)"][0]);   
+
  
  
  
@@ -394,7 +466,7 @@ foreach ($variables as $variable=>$nombre) {
 
 /* Corro el modelo. Itero primero en todos los tiempos disponibles y luego mando el agregavar para mostrar los resultados*/
 
-for ($tiempo = 1; $tiempo <  5; ++$tiempo) {
+for ($tiempo = 1; $tiempo <  6; ++$tiempo) {
     
     $variables=itera($variables,$tiempo);}
 
