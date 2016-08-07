@@ -14,8 +14,9 @@
 <br> <br><br>
 <br> <br><br>
 <br> <br><br>
-<br>
-<br>
+<br> <br><br>
+<br> <br><br>
+
   
  <?php   
     
@@ -24,11 +25,11 @@
     
     function relacioninv ($var1,$var2,$nomvar) {
             
-    for ($posibvar1 = 0; $posibvar1 <  3; ++$posibvar1) {
+    for ($posibvar1 = 0; $posibvar1 <  8; ++$posibvar1) {
     
     if ($var1[$posibvar1][0] == 2) {
         
-        for ($posibvar2 = 0; $posibvar2 <  3; ++$posibvar2) {
+        for ($posibvar2 = 0; $posibvar2 <  8; ++$posibvar2) {
         
         if ($var2[$posibvar2][0] == 0)  
         
@@ -36,27 +37,30 @@
             {   $var2 [$posibvar2][1] = $nomvar; 
                 $var2 [$posibvar2][0] = 1;    
                 break;  } 
-                            } return $var2; } 
+                         return $var2;   }  } 
                                 
      if ($var1[$posibvar1][0] == 1) {
         
-        for ($posibvar2 = 0; $posibvar2 <  3; ++$posibvar2) {
+        for ($posibvar2 = 0; $posibvar2 <  8; ++$posibvar2) {
         
         if ($var2[$posibvar2][0] == 0)  
 
             {   $var2 [$posibvar2][1] = $nomvar; 
                 $var2 [$posibvar2][0] = 2;    
                 break; } 
-                            } return $var2; } }                                                                }  
+                            } return $var2; } }                                           
+                            return $var2;
+                            
+                            }  
                             
    
     function relacionpos ($var1,$var2,$nomvar) {
             
-    for ($posibvar1 = 0; $posibvar1 <  3; ++$posibvar1) {
+    for ($posibvar1 = 0; $posibvar1 <  8; ++$posibvar1) {
     
     if ($var1[$posibvar1][0] == 2) {
         
-        for ($posibvar2 = 0; $posibvar2 <  3; ++$posibvar2) {
+        for ($posibvar2 = 0; $posibvar2 <  8; ++$posibvar2) {
         
         if ($var2[$posibvar2][0] == 0)  
         
@@ -68,14 +72,17 @@
                                 
      if ($var1[$posibvar1][0] == 1) {
         
-        for ($posibvar2 = 0; $posibvar2 <  3; ++$posibvar2) {
+        for ($posibvar2 = 0; $posibvar2 <  8; ++$posibvar2) {
         
         if ($var2[$posibvar2][0] == 0)  
 
             {   $var2 [$posibvar2][1] = $nomvar; 
                 $var2 [$posibvar2][0] = 1;    
                 break; } 
-                            } return $var2; } }                                                                } 
+                            } return $var2; } 
+                            }  return $var2;
+                                                                    
+                            } 
 
    
  /* Funcion para crear variable nueva   */   
@@ -111,11 +118,11 @@
 /*  Lo siguiente ya esta desactualizado: Defino las variables del modelo económico, el primer argumento es el nombre, los siguientes representan distintos tiempos y dentro de cada tiempo hay un array que contiene el estado de la variable y el nombre de la variable que causó su variación de estado */    
    
     
-    $liquidez= array("Liquidez Dineraria",array (0,0),array (0,0),array (0,0),array (0,0),array (0,),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
+    $liquidez= array("Liquidez Dineraria",array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0),array (0,0));
    
 /* Aca  abajo crear nueva variable con funcion   */ 
 
-$mejoratech= creavar ("Mejora Tecnológica");
+
 $invprivada= creavar ("Inversión Bruta Privada");
 $pbi= creavar ("Producto Bruto Interno"); 
 $invneta= creavar ("Inversión Neta General"); 
@@ -126,7 +133,18 @@ $ingempresas= creavar ("Ingreso de las Empresas");
 $endeudpubnac= creavar ("Endeudamiento Público Nacional");
 $endudpubext= creavar ("Endeudamiento Público Exterior");
 $basemon= creavar ("Base Monetaria (dinero en circulación)");
-
+$impuestos= creavar ("Impuestos");
+$rentabilidad= creavar ("Rentabilidad Empresaria");
+$inghogares= creavar ("Ingresos de los Hogares");
+$ahorrohogares= creavar ("Ahorro de los Hogares");
+$gananciasemp= creavar ("Ganancias de las Empresas");
+$expo= creavar ("Exportaciones");
+$saldobp= creavar ("Saldo de la Balanza de Pagos");
+$ofertadivisas= creavar ("Oferta de Divisas");
+$impo= creavar ("Importaciones");
+$demandadivisas= creavar ("Demanda de Divisas");
+$bzacomercial= creavar ("Balanza Comercial (Exportaciones netas de Importaciones)");
+$a= creavar ("");
 
 
 /* Modifico el estado de una variable para dar comienzo a la ejecución del modelo   */ 
@@ -134,9 +152,9 @@ $basemon= creavar ("Base Monetaria (dinero en circulación)");
 
 
     
-    $gastopub[1][0][0]=2;
-    $consumo[1][0][0]=2;
-    $invprivada[1][0][0]=2;
+    $expo[1][0][0]=2;
+     
+   
    
    /* Creo la matriz general, el arrays con todas las variables  */  
     
@@ -146,7 +164,7 @@ $basemon= creavar ("Base Monetaria (dinero en circulación)");
 /* Aca abajo ingreso nuevas variables al modelo  */ 
     
     
-   
+    
     $variables= ingmodelo ($invneta,$variables);
     $variables= ingmodelo ($pbi,$variables);
     $variables= ingmodelo ($gastopub,$variables);
@@ -157,7 +175,20 @@ $basemon= creavar ("Base Monetaria (dinero en circulación)");
     $variables= ingmodelo ($endeudpubnac,$variables);
     $variables= ingmodelo ($endudpubext,$variables);
     $variables= ingmodelo ($basemon,$variables);
-    
+    $variables= ingmodelo ($impuestos,$variables);
+    $variables= ingmodelo ($rentabilidad,$variables);
+    $variables= ingmodelo ($inghogares,$variables);
+    $variables= ingmodelo ($ahorrohogares,$variables);
+    $variables= ingmodelo ($gananciasemp,$variables);
+    $variables= ingmodelo ($expo,$variables);
+    $variables= ingmodelo ($saldobp,$variables);
+    $variables= ingmodelo ($ofertadivisas,$variables);
+    $variables= ingmodelo ($impo,$variables);
+    $variables= ingmodelo ($demandadivisas,$variables);
+    $variables= ingmodelo ($bzacomercial,$variables);
+    $variables= ingmodelo ($a,$variables);
+    $variables= ingmodelo ($a,$variables);
+    $variables= ingmodelo ($a,$variables);
     
 /* Acá doy forma al modelo, esta funcion contiene todas las relaciones entre las distintas variables */ 
     
@@ -187,8 +218,48 @@ $variables["Endeudamiento Público Exterior"][$tiempo+1]=relacioninv($variables[
 
 $variables["Base Monetaria (dinero en circulación)"][$tiempo+1]=relacioninv($variables["Saldo Fiscal Público"][$tiempo],$variables["Base Monetaria (dinero en circulación)"][$tiempo+1],$variables["Saldo Fiscal Público"][0]);
 
+$variables["Saldo Fiscal Público"][$tiempo+1]=relacionpos($variables["Impuestos"][$tiempo],$variables["Saldo Fiscal Público"][$tiempo+1],$variables["Impuestos"][0]);
+
+$variables["Rentabilidad Empresaria"][$tiempo+1]=relacioninv($variables["Impuestos"][$tiempo],$variables["Rentabilidad Empresaria"][$tiempo+1],$variables["Impuestos"][0]);
+
+$variables["Ingresos de los Hogares"][$tiempo+1]=relacioninv($variables["Impuestos"][$tiempo],$variables["Ingresos de los Hogares"][$tiempo+1],$variables["Impuestos"][0]); 
 
 
+$variables["Consumo"][$tiempo+1]=relacionpos($variables["Ingresos de los Hogares"][$tiempo],$variables["Consumo"][$tiempo+1],$variables["Ingresos de los Hogares"][0]); 
+ 
+ $variables["Ahorro de los Hogares"][$tiempo+1]=relacionpos($variables["Ingresos de los Hogares"][$tiempo],$variables["Ahorro de los Hogares"][$tiempo+1],$variables["Ingresos de los Hogares"][0]); 
+
+$variables["Ganancias de las Empresas"][$tiempo+1]=relacionpos($variables["Rentabilidad Empresaria"][$tiempo],$variables["Ganancias de las Empresas"][$tiempo+1],$variables["Rentabilidad Empresaria"][0]);
+
+$variables["Inversión Bruta Privada"][$tiempo+1]=relacionpos($variables["Rentabilidad Empresaria"][$tiempo],$variables["Inversión Bruta Privada"][$tiempo+1],$variables["Rentabilidad Empresaria"][0]);
+
+$variables["Producto Bruto Interno"][$tiempo+1]=relacionpos($variables["Exportaciones"][$tiempo],$variables["Producto Bruto Interno"][$tiempo+1],$variables["Exportaciones"][0]);  
+ 
+ $variables["Saldo de la Balanza de Pagos"][$tiempo+1]=relacionpos($variables["Exportaciones"][$tiempo],$variables["Saldo de la Balanza de Pagos"][$tiempo+1],$variables["Exportaciones"][0]);
+ 
+ $variables["Oferta de Divisas"][$tiempo+1]=relacionpos($variables["Exportaciones"][$tiempo],$variables["Oferta de Divisas"][$tiempo+1],$variables["Exportaciones"][0]);
+ 
+ $variables["Producto Bruto Interno"][$tiempo+1]=relacioninv($variables["Importaciones"][$tiempo],$variables["Producto Bruto Interno"][$tiempo+1],$variables["Importaciones"][0]);  
+ 
+ $variables["Saldo de la Balanza de Pagos"][$tiempo+1]=relacioninv($variables["Importaciones"][$tiempo],$variables["Saldo de la Balanza de Pagos"][$tiempo+1],$variables["Importaciones"][0]);
+ 
+ $variables["Demanda de Divisas"][$tiempo+1]=relacionpos($variables["Importaciones"][$tiempo],$variables["Demanda de Divisas"][$tiempo+1],$variables["Importaciones"][0]);
+ 
+
+ $variables["Producto Bruto Interno"][$tiempo+1]=relacionpos($variables["Balanza Comercial (Exportaciones netas de Importaciones)"][$tiempo],$variables["Producto Bruto Interno"][$tiempo+1],$variables["Balanza Comercial (Exportaciones netas de Importaciones)"][0]);  
+ 
+ $variables["Saldo de la Balanza de Pagos"][$tiempo+1]=relacionpos($variables["Balanza Comercial (Exportaciones netas de Importaciones)"][$tiempo],$variables["Saldo de la Balanza de Pagos"][$tiempo+1],$variables["Balanza Comercial (Exportaciones netas de Importaciones)"][0]);
+ 
+ $variables["Oferta de Divisas"][$tiempo+1]=relacionpos($variables["Balanza Comercial (Exportaciones netas de Importaciones)"][$tiempo],$variables["Oferta de Divisas"][$tiempo+1],$variables["Balanza Comercial (Exportaciones netas de Importaciones)"][0]);
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
     
     return $variables ;
 
@@ -208,7 +279,7 @@ $modifico=array();
 
 foreach ($variables as $variable=>$nombre) {
         
-        for ($posibilidad = 0; $posibilidad <  4; ++$posibilidad)
+        for ($posibilidad = 0; $posibilidad <  5; ++$posibilidad)
         {
         if ($variables [$variable][$tiempo][$posibilidad][1] === $vario) {
 
@@ -236,7 +307,7 @@ if (array_sum ($modifico )>=2) {
 
 foreach ($variables as $variable=>$nombre) {
 
-   for ($posibilidad = 0; $posibilidad <  4; ++$posibilidad) {
+   for ($posibilidad = 0; $posibilidad <  5; ++$posibilidad) {
     
     if ($variables [$variable][$tiempo][$posibilidad][1] === $vario) {
         
@@ -290,17 +361,10 @@ for ($tiempo = 1; $tiempo <  5; ++$tiempo) {
 agregavar($variables, 1,0);
 
 
-echo $variables["Producto Bruto Interno"][1][0][0];
-echo $variables["Producto Bruto Interno"][1][1][0];
-echo $variables["Producto Bruto Interno"][2][0][0];
-echo $variables["Producto Bruto Interno"][2][1][0];
-echo $variables["Producto Bruto Interno"][2][2][0];
-echo $variables["Saldo Fiscal Público"][2][0][0];
 
 
-echo $variables["Producto Bruto Interno"][2][0][1];
-echo $variables["Producto Bruto Interno"][2][1][1];
-echo $variables["Producto Bruto Interno"][2][2][1];
+
+
 
 
        ?>
