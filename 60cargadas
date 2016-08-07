@@ -168,10 +168,27 @@ $rendactfin= creavar ("Rendimiento Activos Financieros");
 $ingcapfin= creavar ("Ingreso de Capitales Financieros");
 $demactfin= creavar ("Demanda de Activos Financieros");
 $depbancarios= creavar ("Depositos Bancarios");
+$encaje= creavar ("Encaje Bancario (Liquidez Obligatoria de los Bancos)");
+$intdeupub= creavar ("Intereses de Deuda Pública");
+$cambiotech= creavar ("Cambio Tecnológico");
+$arancel= creavar ("Aranceles de Importacion");
+$retenciones= creavar ("Retenciones a las Exportaciones");
+$ied= creavar ("Inversión Extranjera Directa");
+$endeuprivext= creavar ("Endeudamiento Privado con el Exterior");
+$tcn= creavar ("Tipo de Cambio Nominal($/US$)");
+$tcfuturo= creavar ("Tipo de cambio futuro esperado");
+$inflamundial= creavar ("Inflación Mundial");
 $a= creavar ("");
 $a= creavar ("");
 $a= creavar ("");
 $a= creavar ("");
+$a= creavar ("");
+$a= creavar ("");
+$a= creavar ("");
+$a= creavar ("");
+
+
+
 
 /* Modifico el estado de una variable para dar comienzo a la ejecución del modelo   */ 
     
@@ -236,10 +253,33 @@ $a= creavar ("");
     $variables= ingmodelo ($ingcapfin,$variables);
     $variables= ingmodelo ($demactfin,$variables);
     $variables= ingmodelo ($depbancarios,$variables);
+    $variables= ingmodelo ($encaje,$variables);
+    $variables= ingmodelo ($intdeupub,$variables);
+    $variables= ingmodelo ($cambiotech,$variables);
+    $variables= ingmodelo ($arancel,$variables);
+    $variables= ingmodelo ($retenciones,$variables);
+    $variables= ingmodelo ($ied,$variables);
+    $variables= ingmodelo ($endeuprivext,$variables);
+    $variables= ingmodelo ($tcn,$variables);
+    $variables= ingmodelo ($tcfuturo,$variables);
+    $variables= ingmodelo ($inflamundial,$variables);
     $variables= ingmodelo ($a,$variables);
     $variables= ingmodelo ($a,$variables);
     $variables= ingmodelo ($a,$variables);
     $variables= ingmodelo ($a,$variables);
+    $variables= ingmodelo ($a,$variables);
+    $variables= ingmodelo ($a,$variables);
+    $variables= ingmodelo ($a,$variables);
+    $variables= ingmodelo ($a,$variables);
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 /* Acá doy forma al modelo, esta funcion contiene todas las relaciones entre las distintas variables */ 
     
@@ -372,12 +412,62 @@ $variables["Créditos al Consumo"][$tiempo+1]=relacionpos($variables["Depositos 
 
 $variables["Demanda de Activos Financieros"][$tiempo+1]=relacionpos($variables["Base Monetaria (dinero en circulación)"][$tiempo],$variables["Demanda de Activos Financieros"][$tiempo+1],$variables["Base Monetaria (dinero en circulación)"][0]);   
 
+ $variables["Créditos a la Inversión"][$tiempo+1]=relacioninv($variables["Encaje Bancario (Liquidez Obligatoria de los Bancos)"][$tiempo],$variables["Créditos a la Inversión"][$tiempo+1],$variables["Encaje Bancario (Liquidez Obligatoria de los Bancos)"][0]);   
+
+$variables["Créditos al Consumo"][$tiempo+1]=relacioninv($variables["Encaje Bancario (Liquidez Obligatoria de los Bancos)"][$tiempo],$variables["Créditos al Consumo"][$tiempo+1],$variables["Encaje Bancario (Liquidez Obligatoria de los Bancos)"][0]);   
+
+$variables["Base Monetaria (dinero en circulación)"][$tiempo+1]=relacioninv($variables["Encaje Bancario (Liquidez Obligatoria de los Bancos)"][$tiempo],$variables["Base Monetaria (dinero en circulación)"][$tiempo+1],$variables["Encaje Bancario (Liquidez Obligatoria de los Bancos)"][0]);    
+
+$variables["Intereses de Deuda Pública"][$tiempo+1]=relacionpos($variables["Endeudamiento Público Nacional"][$tiempo],$variables["Intereses de Deuda Pública"][$tiempo+1],$variables["Endeudamiento Público Nacional"][0]);  
  
- 
- 
- 
- 
-    
+$variables["Tasa de Interés (Precio del Dinero/ Activos Financieros)"][$tiempo+1]=relacioninv($variables["Demanda de Activos Financieros"][$tiempo],$variables["Tasa de Interés (Precio del Dinero/ Activos Financieros)"][$tiempo+1],$variables["Demanda de Activos Financieros"][0]);  
+
+$variables["Productividad"][$tiempo+1]=relacionpos($variables["Cambio Tecnológico"][$tiempo],$variables["Productividad"][$tiempo+1],$variables["Cambio Tecnológico"][0]);  
+
+$variables["Inversión Bruta Privada"][$tiempo+1]=relacionpos($variables["Ganancias de las Empresas"][$tiempo],$variables["Inversión Bruta Privada"][$tiempo+1],$variables["Ganancias de las Empresas"][0]);  
+
+$variables["Demanda de Activos Financieros"][$tiempo+1]=relacionpos($variables["Ganancias de las Empresas"][$tiempo],$variables["Demanda de Activos Financieros"][$tiempo+1],$variables["Ganancias de las Empresas"][0]);   
+
+$variables["Demanda de Divisas"][$tiempo+1]=relacionpos($variables["Ganancias de las Empresas"][$tiempo],$variables["Demanda de Divisas"][$tiempo+1],$variables["Ganancias de las Empresas"][0]);  
+
+$variables["Impuestos"][$tiempo+1]=relacionpos($variables["Aranceles de Importacion"][$tiempo],$variables["Impuestos"][$tiempo+1],$variables["Aranceles de Importacion"][0]);  
+
+$variables["Impuestos"][$tiempo+1]=relacionpos($variables["Retenciones a las Exportaciones"][$tiempo],$variables["Impuestos"][$tiempo+1],$variables["Retenciones a las Exportaciones"][0]);  
+
+$variables["Importaciones"][$tiempo+1]=relacioninv($variables["Aranceles de Importacion"][$tiempo],$variables["Importaciones"][$tiempo+1],$variables["Aranceles de Importacion"][0]);  
+
+$variables["Exportaciones"][$tiempo+1]=relacioninv($variables["Retenciones a las Exportaciones"][$tiempo],$variables["Exportaciones"][$tiempo+1],$variables["Retenciones a las Exportaciones"][0]);  
+
+$variables["Inversión Bruta Privada"][$tiempo+1]=relacionpos($variables["Inversión Extranjera Directa"][$tiempo],$variables["Inversión Bruta Privada"][$tiempo+1],$variables["Inversión Extranjera Directa"][0]);  
+
+$variables["Saldo de la Balanza de Pagos"][$tiempo+1]=relacionpos($variables["Inversión Extranjera Directa"][$tiempo],$variables["Saldo de la Balanza de Pagos"][$tiempo+1],$variables["Inversión Extranjera Directa"][0]); 
+
+$variables["Oferta de Divisas"][$tiempo+1]=relacionpos($variables["Inversión Extranjera Directa"][$tiempo],$variables["Oferta de Divisas"][$tiempo+1],$variables["Inversión Extranjera Directa"][0]); 
+
+$variables["Saldo de la Balanza de Pagos"][$tiempo+1]=relacionpos($variables["Endeudamiento Público Exterior"][$tiempo],$variables["Saldo de la Balanza de Pagos"][$tiempo+1],$variables["Endeudamiento Público Exterior"][0]); 
+
+$variables["Intereses de Deuda Pública"][$tiempo+1]=relacionpos($variables["Endeudamiento Público Exterior"][$tiempo],$variables["Saldo de la Balanza de Pagos "][$tiempo+1],$variables["Endeudamiento Público Exterior"][0]);
+
+$variables["Saldo de la Balanza de Pagos"][$tiempo+1]=relacionpos($variables["Endeudamiento Privado con el Exterior"][$tiempo],$variables["Saldo de la Balanza de Pagos"][$tiempo+1],$variables["Endeudamiento Privado con el Exterior"][0]); 
+
+$variables["Tipo de Cambio Nominal($/US$)"][$tiempo+1]=relacionpos($variables["Demanda de Divisas"][$tiempo],$variables["Tipo de Cambio Nominal($/US$)"][$tiempo+1],$variables["Demanda de Divisas"][0]);
+
+$variables["Reservas Internacionales del Banco Central"][$tiempo+1]=relacioninv($variables["Demanda de Divisas"][$tiempo],$variables["Reservas Internacionales del Banco Central"][$tiempo+1],$variables["Demanda de Divisas"][0]);
+
+$variables["Tipo de Cambio Nominal($/US$)"][$tiempo+1]=relacioninv($variables["Oferta de Divisas"][$tiempo],$variables["Tipo de Cambio Nominal($/US$)"][$tiempo+1],$variables["Oferta de Divisas"][0]);
+
+$variables["Tipo de Cambio Real (Precio relativo de bienes extranjeros frente a locales)"][$tiempo+1]=relacionpos($variables["Tipo de Cambio Nominal($/US$)"][$tiempo],$variables["Tipo de Cambio Real (Precio relativo de bienes extranjeros frente a locales)"][$tiempo+1],$variables["Tipo de Cambio Nominal($/US$)"][0]);
+
+$variables["Balanza Comercial (Exportaciones netas de Importaciones)"][$tiempo+1]=relacionpos($variables["Tipo de Cambio Real (Precio relativo de bienes extranjeros frente a locales)"][$tiempo],$variables["Balanza Comercial (Exportaciones netas de Importaciones)"][$tiempo+1],$variables["Tipo de Cambio Real (Precio relativo de bienes extranjeros frente a locales)"][0]);
+
+$variables["Costos de Producción"][$tiempo+1]=relacionpos($variables["Tipo de Cambio Real (Precio relativo de bienes extranjeros frente a locales)"][$tiempo],$variables["Costos de Producción"][$tiempo+1],$variables["Tipo de Cambio Real (Precio relativo de bienes extranjeros frente a locales)"][0]);
+
+$variables["Rendimiento Activos Financieros"][$tiempo+1]=relacioninv($variables["Tipo de cambio futuro esperado"][$tiempo],$variables["Rendimiento Activos Financieros"][$tiempo+1],$variables["Tipo de cambio futuro esperado"][0]);
+
+$variables["Tipo de Cambio Real (Precio relativo de bienes extranjeros frente a locales)"][$tiempo+1]=relacionpos($variables["Inflación Mundial"][$tiempo],$variables["Tipo de Cambio Real (Precio relativo de bienes extranjeros frente a locales)"][$tiempo+1],$variables["Inflación Mundial"][0]);
+
+
+
     return $variables ;
 
 } 
