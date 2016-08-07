@@ -55,7 +55,7 @@ pvar {
 	background-color: #cc0323;
 	color: white;
 	font-family: Tahoma, sans-serif;
-	width: 8em;
+	width: 7em;
 	margin-top: 2em;
 	margin-bottom: 2em;
 	}
@@ -66,8 +66,8 @@ pvar {
 	font-size: 1em;
 	color: white;
 	text-align: center;
-	
-    
+	margin-bottom: 0.4em;
+    margin-top: 0.4em;
     
 }
 
@@ -79,7 +79,6 @@ pvar {
     bottom: 180px;
     border: 2px solid green; /**/
     vertical-align: top;
-    
     margin-bottom: -5em;
         }
         
