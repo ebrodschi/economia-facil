@@ -37,7 +37,8 @@
             {   $var2 [$posibvar2][1] = $nomvar; 
                 $var2 [$posibvar2][0] = 1;    
                 break;  } 
-                         return $var2;   }  } 
+        }
+                         return $var2;   }  
                                 
      if ($var1[$posibvar1][0] == 1) {
         
@@ -48,7 +49,9 @@
             {   $var2 [$posibvar2][1] = $nomvar; 
                 $var2 [$posibvar2][0] = 2;    
                 break; } 
-                            } return $var2; } }                                           
+                            } return $var2; } 
+                            
+                            }                                           
                             return $var2;
                             
                             }  
@@ -68,7 +71,7 @@
             {   $var2 [$posibvar2][1] = $nomvar; 
                 $var2 [$posibvar2][0] = 2;    
                 break;  } 
-                            } return $var2; } 
+                        }     return $var2; } 
                                 
      if ($var1[$posibvar1][0] == 1) {
         
@@ -79,7 +82,8 @@
             {   $var2 [$posibvar2][1] = $nomvar; 
                 $var2 [$posibvar2][0] = 1;    
                 break; } 
-                            } return $var2; } 
+        }
+                             return $var2; } 
                             }  return $var2;
                                                                     
                             } 
@@ -277,11 +281,7 @@ $a= creavar ("");
     $variables= ingmodelo ($compragobbon,$variables);
     $variables= ingmodelo ($ventagobbon,$variables);
     $variables= ingmodelo ($concentracion,$variables);
-    $variables= ingmodelo ($a,$variables);
-    $variables= ingmodelo ($a,$variables);
-    $variables= ingmodelo ($a,$variables);
-    $variables= ingmodelo ($a,$variables);
-    $variables= ingmodelo ($a,$variables);
+    
     
     
     
@@ -456,7 +456,7 @@ $variables["Oferta de Divisas"][$tiempo+1]=relacionpos($variables["Inversión Ex
 
 $variables["Saldo de la Balanza de Pagos"][$tiempo+1]=relacionpos($variables["Endeudamiento Público Exterior"][$tiempo],$variables["Saldo de la Balanza de Pagos"][$tiempo+1],$variables["Endeudamiento Público Exterior"][0]); 
 
-$variables["Intereses de Deuda Pública"][$tiempo+1]=relacionpos($variables["Endeudamiento Público Exterior"][$tiempo],$variables["Saldo de la Balanza de Pagos "][$tiempo+1],$variables["Endeudamiento Público Exterior"][0]);
+$variables["Intereses de Deuda Pública"][$tiempo+1]=relacionpos($variables["Endeudamiento Público Exterior"][$tiempo],$variables["Intereses de Deuda Pública"][$tiempo+1],$variables["Endeudamiento Público Exterior"][0]);
 
 $variables["Saldo de la Balanza de Pagos"][$tiempo+1]=relacionpos($variables["Endeudamiento Privado con el Exterior"][$tiempo],$variables["Saldo de la Balanza de Pagos"][$tiempo+1],$variables["Endeudamiento Privado con el Exterior"][0]); 
 
@@ -504,7 +504,7 @@ $variables["Nivel de Precios (Inflación)"][$tiempo+1]=relacionpos($variables["M
 
 $variables["Rentabilidad Empresaria"][$tiempo+1]=relacionpos($variables["Mark-Up"][$tiempo],$variables["Rentabilidad Empresaria"][$tiempo+1],$variables["Mark-Up"][0]);
 
-$variables["Ganancias de las Empresas"][$tiempo+1]=relacionpos($variables["Ingresos de las Empresas"][$tiempo],$variables["Ganancias de las Empresas"][$tiempo+1],$variables["Ingresos de las Empresas"][0]);
+$variables["Ganancias de las Empresas"][$tiempo+1]=relacionpos($variables["Ingreso de las Empresas"][$tiempo],$variables["Ganancias de las Empresas"][$tiempo+1],$variables["Ingreso de las Empresas"][0]);
 
 $variables["Productividad"][$tiempo+1]=relacionpos($variables["Cualificación de la Fuerza de Trabajo"][$tiempo],$variables["Productividad"][$tiempo+1],$variables["Cualificación de la Fuerza de Trabajo"][0]);
 
@@ -559,11 +559,14 @@ if (array_sum ($modifico )==1) {
     
     echo ' <div id="longcol"><p>';
     }
-if (array_sum ($modifico )>=2) {
+if (array_sum ($modifico )==2) {
     
     echo ' <div id="longcol2"><p>';
     }
-
+if (array_sum ($modifico )>=3) {
+    
+    echo ' <div id="longcol3"><p>';
+    }
 
  
 
