@@ -1,0 +1,113 @@
+.header {
+    width: 300px;
+    height: 25px;
+    background-color: #5A68A5;
+    border-radius: 10px;
+}
+
+body {
+ /*color: white;*/
+ 
+}
+
+
+
+img {
+    width: 200px;
+    float: right;
+}
+
+h1 {
+    font-family: Verdana, sans-serif;
+    font-size: 18px;
+    text-align: center;
+    color: #ffffff;
+}
+
+p {
+    font-family: Tahoma, sans-serif;
+    color: white;
+}
+
+li {
+    font-family: Tahoma, sans-serif;
+    list-style-type: square;
+}
+
+input {
+    width: 280px;
+}
+
+
+pvar {
+    font-family: Tahoma, sans-serif;
+    color: green;
+    position: relative;
+	font-size: 1em;
+	text-align: center;
+}
+
+
+#button0{
+	border: 2px solid #000000;
+    border-radius: 5px;
+    position: relative;
+	background-color: #cc0323;
+	color: white;
+	font-family: Tahoma, sans-serif;
+	width: 7em;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	min-height: 4em;
+	}
+
+
+#button0 p{
+    position: relative;
+	font-size: 1em;
+	color: white;
+	text-align: center;
+	vertical-align: center;
+	margin-bottom: 0.4em;
+    margin-top: 0.4em;
+    
+}
+
+
+#longcol {
+    
+    position: relative;
+    left: 9em;
+    bottom: 140px;
+    border: 2px solid white; /**/
+    vertical-align: top;
+    margin-bottom: -5em;
+    
+    
+    
+        }
+        
+#longcol2 {
+    
+    position: relative;
+    left: 9em;
+    bottom: 180px;
+    border: 2px solid white;/* */
+    vertical-align: top;
+	margin-bottom: -10em;
+    
+
+        }
+
+#longcol3 {
+    
+    position: relative;
+    left: 9em;
+    bottom: 230px;
+    border: 2px solid white;/* */
+    vertical-align: top;
+	margin-bottom: -15em;
+    
+
+        }
+
