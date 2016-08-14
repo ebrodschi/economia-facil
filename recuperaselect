@@ -12,9 +12,19 @@
 
 
   
- <?php   
+ <?php
+
+/*
+Template Name: ECOFACILTEMPLATE
+*/
+   
     
 /* Defino las relaciones generales positivas e inversas */ 
+    
+
+   get_header();
+   stacker_scripts();
+	
     
     
     function relacioninv ($var1,$var2,$nomvar) {
@@ -530,9 +540,6 @@ $variables["Endeudamiento Público Nacional"][$tiempo+1]=relacionpos($variables[
 
 $variables["Nivel de Precios (Inflación)"][$tiempo+1]=relacionpos($variables["Concentración de Mercado (Monopolios/Oligopolios)"][$tiempo],$variables["Nivel de Precios (Inflación)"][$tiempo+1],$variables["Concentración de Mercado (Monopolios/Oligopolios)"][0]);
 
-
-
-
     return $variables ;
 
 } 
@@ -562,8 +569,10 @@ array_push ($modifico, "1");
 }
 }
 
+array_push ($modifico, "0");
+
 if (array_sum ($modifico )==0) {
-    echo ' <div id="longcol"><p>';
+    echo ' <div id="longcol0"><p>';
 }
 if (array_sum ($modifico )==1) {
     
@@ -613,12 +622,7 @@ foreach ($variables as $variable=>$nombre) {
             
             
             
-            }   
-    	 
-    	    
-    	
-    	    
-    	  
+            }     
      	    
     	}  	 }   }    echo ' </div> ';
 
@@ -626,84 +630,49 @@ foreach ($variables as $variable=>$nombre) {
 
 /* Corro el modelo. Itero primero en todos los tiempos disponibles y luego mando el agregavar para mostrar los resultados*/
 
-
-
-
 $meses=array("azul", "verde","rojo");
 $meses = $listadesplegable;  
 
-echo '<form name="form1" id="form1" method="post" action="index.php" >'; 
+echo "<div margin-right='10px' >";
+echo "<font margin-right='10px' color='green'>  Mirá los efectos cadena que se producen en una economía";
+echo "</div  >";
+ECHO "<BR>";
+echo "<font color='green'>Elige qué variable de la economía quieres modificar";
+echo '<form name="form1" id="form1" method="get" action="http://www.numberstalks.com/economia-facil/" >'; 
 $nombre = 'meses'; 
 $resultado = lista($nombre, $meses); 
 echo $resultado; 
-echo '</form>';  
+  
 
-function lista($nombre, $meses){ 
-    $array = $meses; 
-    $txt= "<select name='$nombre' id='$nombre' size='10' >  ";  
+function lista($nombre, $meses){ $array = $meses; $txt= "<select name='$nombre' id='$nombre' size='1' >  ";  
 
-for ($i=0; $i<sizeof($array); $i++){ $txt .= "<option value='$i'>". $array[$i] . '</option>'; } $txt .= '</select>'; 
-return $txt; };   
+for ($i=0; $i<sizeof($array); $i++) { $txt .= "<option value='$i'>". $array[$i] . '</option>'; } 
+$txt .= '</select>'; 
+return $txt;  }  
 
+ECHO "<BR><BR>";
+echo "<font color='green'>Elige ahora si quieres que suba o baje";
 
-echo $_POST['form1'];
-
-echo '<form name="form2" id="form2" method="post" action="index.php" >';
-echo "<select name='$nombre' id='$nombre' size='2' >  ";
+echo "<select name='variacion' id='variacion' size='1' >  ";
 echo " <option value='1'> Sube </option>";
 echo " <option value='2'> Baja </option>";
-echo "<select/  ";
+echo ' <input type="submit" name="Aceptar" id="Aceptar" value="Enviar" >';
+echo "</select>";
 echo "</form>";
 
-echo $_POST["form2"];
-
-$var = $_POST['test'];
-
-if($var == "Sube"){
-    $sU = "selected";
-}
-if($var == "Baja"){
-    $sD = "selected";
-}
-
-
-echo ' <form id="form" name="form" method="post" action="index.php" > ';
-echo '<select name="test" id="test" onChange="document.form.submit();">';
-echo ' <option value="Sube"<?php echo $sU;?>>Sube</option>';
-echo ' <option value="Baja"<?php echo $sD;?>>Baja</option>';
-echo '</select>';
-
-echo '</form>'; 
-
-
-
-echo $var;
-
-
+print_r($_GET);
+if($_GET["variacion"] === "") echo "a is an empty string\n";
+if($_GET["variacion"] === false) echo "a is false\n";
+if($_GET["variacion"] === null) echo "a is null\n";
+if(isset($_GET["variacion"])) echo "a is set\n";
+if(!empty($_GET["variacion"])) echo "a is not empty";
+echo $_GET["variacion"];
 
 for ($tiempo = 1; $tiempo <  6; ++$tiempo) {
     
     $variables=itera($variables,$tiempo);}
+ECHO "<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>";
 
-echo " <br> <br><br>
-<br> <br><br>
+agregavar ($variables,1,0);
 
-<br> <br><br>
-<br> <br><br>";
-
-
-
-agregavar($variables, 1,0);
-
-
-
-
-
-
-
-
-       ?>
-      
-    </p>
-  </body>
-</html> 
+?>
